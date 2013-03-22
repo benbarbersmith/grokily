@@ -18,30 +18,55 @@ describe "Grokily" do
     last_request.url.should == "https://github.com/benjaminasmith/grokily"
   end
 
-  # Present tense tests
+  context "regular verb få" do
+    it "conjugates in the present tense to får" do
+      get '/norsk/få/present'
+      last_response.body.should == "får"
+    end
 
-  it "conjugates the regular verb få in the present tense" do
-    # Should be får
-    get '/norsk/få/presens'
-    last_response.body.should == "får"
+    context "presens" do
+      it "conjugates in presens to får" do
+        get '/norsk/få/presens'
+        last_response.body.should == "får"
+      end
+    end
   end
 
-  it "conjugates the irregular verb burde in the present tense" do
-    # Should be bør
-    get '/norsk/burde/presens'
-    last_response.body.should == "bør"
+  context "irregular verb burde" do
+    it "conjugates in the present tense to bør" do
+      get '/norsk/burde/present'
+      last_response.body.should == "bør"
+    end
+
+    it "conjugates in presens to bør" do
+      get '/norsk/burde/presens'
+      last_response.body.should == "bør"
+    end
   end
 
-  it "conjugates the irregular verb finnes in the present tense" do
-    # Should be finnes 
-    get '/norsk/finnes/presens'
-    last_response.body.should == "finnes"
+  context "irregular verb finnes" do
+    it "conjugates in the present tense to finnes" do
+      get '/norsk/finnes/present'
+      last_response.body.should == "finnes"
+    end
+
+    it "conjugates in presens to finnes" do
+      get '/norsk/finnes/presens'
+      last_response.body.should == "finnes"
+    end
   end
 
-  it "fails to conjugate unknown verbs in the present tense" do
-    # Should be a 404
-    get '/norsk/finish/presens'
-    last_response.ok? == false 
+  context "unknown verb" do
+    it "fails to conjugate in the present tense" do
+      get '/norsk/finish/present'
+      last_response.ok? == false 
+    end
+
+    it "fails to conjugate in presens" do
+      get '/norsk/finish/presens'
+      last_response.ok? == false 
+    end
   end
+
 
 end
