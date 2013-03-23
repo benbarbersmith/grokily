@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-require_relative 'app.rb'
+require_relative 'grokily.rb'
 require 'rspec'
 require 'rack/test'
 
