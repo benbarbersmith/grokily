@@ -1,12 +1,26 @@
 # encoding: UTF-8
 
 class Norsk < Language
+
   def initialize
-    @cheers = "si skål!"
     @subjects = ["Jeg", "Du", "Han", "Hun", "Vi", "De", "Den", "Det", "Dere"]
-    @default_subject = @subjects[0]
-    @regular_verbs = []
-    @irregular_verbs = ["finnes"]
-    @verbs = @irregular_verbs + @regular_verbs
+    @tenses = {}
+    @verbs =  {"få" => "få"}
+
+    NorskPresentTense.register(self)
+  end
+
+  def conjugate(verb, tense, subject=false)
+    if has_verb? verb and has_tense? tense 
+      @tenses[tense].conjugate(@verbs[verb])
+    end
+  end
+end
+
+class NorskPresentTense < Tense
+  @keys = "present", "presens"
+
+  def self.conjugate verb
+    "#{verb}r" 
   end
 end

@@ -16,9 +16,8 @@ class Router
 
   # Process a user inputs by conjugating the verb and applying a subject.
   def process(language, verb, tense, subject=false)
-    lang = @languages[language] or return false 
-    conjugation = lang.conjugate(verb, tense) or return false
-    lang.subjectify(conjugation, subject)
+    lang = @languages[language] or raise LanguageException, "Unknown language #{language}"
+    lang.conjugate(verb, tense, subject)
   end
 
 end

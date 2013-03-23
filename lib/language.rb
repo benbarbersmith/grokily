@@ -1,24 +1,28 @@
 # encoding: UTF-8
+require_relative 'tense'
 
 class Language
-  def conjugate(verb, tense)
-    if is_verb? verb 
-      @cheers
-    else false end
-  end
+  public
 
-  def subjectify(conjugated_verb, subject)
-    "#{is_subject? subject or @default_subject} #{conjugated_verb}"
+  def register_tense(key, tense)
+    @tenses[key] = tense
   end
 
   private
 
-  def is_verb? verb
-    @verbs.include? verb
+  def has_subject? subject
+    @subjects.each {|s| return subject if [s.upcase, s.downcase, s].include? subject }
+    raise LanguageException, "Unknown subject #{subject}"
   end
 
-  def is_subject? subject
-    @subjects.each {|s| return subject if [s.upcase, s.downcase, s].include? subject }
-    return false
+  def has_tense? tense
+    @tenses.key? tense or raise LanguageException, "Unknown tense #{tense}"
   end
+
+  def has_verb? verb
+    @verbs.key? verb or raise LanguageException, "Unknown verb #{verb}"
+  end
+end
+
+class LanguageException < Exception
 end

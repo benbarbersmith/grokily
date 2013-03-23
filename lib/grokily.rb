@@ -13,12 +13,24 @@ class Grokily < Sinatra::Base
 
   # Allow users to specify a language, verb, tense and subject...
   get '/:language/:verb/:tense/:subject' do |language, verb, tense, subject|
-    router.process(language, verb, tense, subject) or halt 404
+    begin
+      router.process(language, verb, tense, subject) 
+    rescue LanguageException
+      halt 404
+    end
   end
 
   # ...or ignore the subject, if they prefer.
   get '/:language/:verb/:tense' do |language, verb, tense|
-    router.process(language, verb, tense) or halt 404
+    begin
+      router.process(language, verb, tense) or halt 404
+    rescue LanguageException
+      halt 404
+    end
+  end
+
+  not_found do
+    "Whoops. Not found." 
   end
 
   run! if app_file == $0
