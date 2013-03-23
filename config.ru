@@ -1,2 +1,2 @@
-require './app'
+require './grokily'
 run Grokily 

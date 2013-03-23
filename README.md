@@ -3,19 +3,34 @@ Grokily
 
 A RESTful API to help you conjugate Norwegian Bokmål verbs.
 
+Installation
+------------
+
+Install Sinatra from rubygems:
+
+  $ gem install sinatra
+
+That's the only dependency you need; after that, just grab a copy of the souce
+and run the application.
+
+  $ ruby grokily.rb 
+
+By default, Sinatra will run grokily on port 4567 on your local machine.
+
 Usage
 -----
 
-All URLs start with `http://grokily.com/norsk/` followed by the infinitive,
-tense and (if you like) a subject. For example, you could try:
+Assuming that you're running on the default host and port, all URLs start with
+`http://localhost:54567/norsk/` followed by the infinitive, the tense and (if you
+like) a subject. For example, you could try:
 
-  http://grokily.com/norsk/be/presens
+  http://localhost:4567/norsk/be/presens
 
-  http://grokily.com/norsk/begynne/futurum/du
+  http://localhost:4567/norsk/begynne/futurum/du
 
-  http://grokily.com/norsk/arbeide/viktig
+  http://localhost:4567/norsk/arbeide/imperative
 
-  http://grokily.com/norsk/glede/presens/jeg
+  http://localhost:4567/norsk/glede/presens/jeg
 
 Tenses can be specified using English or Norsk. Available tenses are:
 
