@@ -21,7 +21,7 @@ Usage
 -----
 
 Assuming that you're running on the default host and port, all URLs start with
-`http://localhost:54567/norsk/` followed by the infinitive, the tense and (if you
+`http://localhost:4567/norsk/` followed by the infinitive, the tense and (if you
 like) a subject. For example, you could try:
 
     http://localhost:4567/norsk/be/presens
