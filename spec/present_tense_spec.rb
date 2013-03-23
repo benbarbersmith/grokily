@@ -1,15 +1,7 @@
 # encoding: UTF-8
-
-require_relative 'grokily.rb'
-require 'rspec'
-require 'rack/test'
+require_relative 'spec_helper'
 
 describe "Grokily" do
-  include Rack::Test::Methods
-
-  def app
-    Grokily
-  end
 
   it "redirects to Github on root" do
     get '/'
@@ -67,6 +59,5 @@ describe "Grokily" do
       last_response.ok? == false 
     end
   end
-
 
 end
