@@ -20,32 +20,32 @@ By default, Sinatra will run grokily on port 4567 on your local machine.
 Usage
 -----
 
-Assuming that you're running on the default host and port, all URLs start with
-`http://localhost:4567/norsk/` followed by the infinitive, the tense and (if you
-like) a subject. For example, you could try:
+Assuming that you're running on the default host and port, all URLs start
+with `http://localhost:4567/norsk/` followed by the infinitive and the
+tense. For example, you could try:
 
     http://localhost:4567/norsk/be/presens
 
-    http://localhost:4567/norsk/begynne/futurum/du
+    http://localhost:4567/norsk/begynne/futurum
 
     http://localhost:4567/norsk/arbeide/imperative
 
-    http://localhost:4567/norsk/glede/presens/jeg
+    http://localhost:4567/norsk/glede/present
 
 Tenses can be specified using English or Norsk. Available tenses are:
 
-* `present`/`presens`
-* `past`/`fortid`
-* `future`/`futurum`
-* `imperative`/`viktig`
-* `present-participle`/`presens-partisipp`
-* `past-participle`/`fortid-partisipp`
-* `present-perfect`/`presens-perfekt`
-* `past-perfect`/`fortid-perfekt`
-* `passive`/`passiv`
-* `present-passive`/`presens-passiv`
-* `conditional`/`betinget` 
-* `stem`/`demme`
+* `present` / `presens`
+* `past` / `fortid`
+* `future` / `futurum`
+* `imperative` / `viktig`
+* `present-participle` / `presens-partisipp`
+* `past-participle` / `fortid-partisipp`
+* `present-perfect` / `presens-perfekt`
+* `past-perfect` / `fortid-perfekt`
+* `passive` / `passiv`
+* `present-passive` / `presens-passiv`
+* `conditional` / `betinget` 
+* `stem` / `demme`
 
 Improvements? Ideas?
 --------------------
