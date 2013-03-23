@@ -13,7 +13,7 @@ Install Sinatra from rubygems:
 That's the only dependency you need; after that, just grab a copy of the souce
 and run the application.
 
-    $ ruby grokily.rb 
+    $ ruby lib/grokily.rb 
 
 By default, Sinatra will run grokily on port 4567 on your local machine.
 
