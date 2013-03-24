@@ -1,14 +1,17 @@
 # encoding: UTF-8
+
+require 'json'
 require_relative 'tense'
+require_relative 'verb'
 
 class Language
   private
 
-  def initialize
+  def initialize file
     @verbs = {}
-    load_verbs
     @tenses = {}
-    load_tenses 
+    load_verbs file unless self.instance_of? Language
+    load_tenses file unless self.instance_of? Language
   end
 
   public
@@ -18,8 +21,12 @@ class Language
   end
 
   def verbs
-    {:regular_verbs   => @verbs.values.select {|v| v if v.regular? },
-     :irregular_verbs => @verbs.values.select {|v| v unless v.regular? } }
+    {
+      :regular_verbs   => \
+        @verbs.values.select {|v| v unless v.irregular? }.map {|v| v.to_hash},
+      :irregular_verbs => \
+        @verbs.values.select {|v| v if v.irregular? }.map {|v| v.to_hash} 
+    }
   end
 
   def conjugate(verb, tense, subject=false)
@@ -28,16 +35,24 @@ class Language
 
   private
 
-  def load_verbs 
+  def load_verbs file
+    if @verbs.empty? 
+      verb_file = File.open(File.dirname(file) + "/verbs.json") 
+      verbs = JSON.parse(verb_file.read, :symbolize_names => true) 
+      verbs.each {|v| 
+        verb = Verb.new(v)
+        @verbs[verb.infinitive] = verb
+      }
+    end
   end
 
-  def load_tenses
-    Dir[File.dirname(__FILE__) + "/*_tense.rb"].each {|file|
+  def load_tenses file
+    Dir[File.dirname(file) + "/*_tense.rb"].each {|file|
       require file
-      tense = /#{File.dirname(__FILE__)}\/(.*)_tense.rb/.match(file)[1]
+      tense = /#{File.dirname(file)}\/(.*)_tense.rb/.match(file)[1]
       classname = "#{self.class}#{tense.capitalize}Tense"
       Object.const_get(classname).register(self)
-    }
+    } if @tenses.empty? 
   end
 
   def has_tense? tense
