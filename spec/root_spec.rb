@@ -10,4 +10,19 @@ describe "Grokily" do
     last_request.url.should == "https://github.com/benjaminasmith/grokily"
   end
 
+  it "exposes a list of languages on request" do
+    get '/languages'
+    last_response.should be_ok
+    last_response.header['Content-Type'].should include 'application/json'
+    JSON.parse(last_response.body).has_key "languages"
+  end
+
+  it "exposes a list of Norwegian verbs on request" do
+    get '/norsk/verbs'
+    last_response.should be_ok
+    last_response.header['Content-Type'].should include 'application/json'
+    JSON.parse(last_response.body).has_key "regular_verbs"
+    JSON.parse(last_response.body).has_key "irregular_verbs"
+  end
+
 end
