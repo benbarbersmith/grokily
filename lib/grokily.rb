@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'sinatra/base'
-require_relative 'language'
+require_relative 'base/language'
 require_relative 'router'
 
 class Grokily < Sinatra::Base
@@ -11,26 +11,17 @@ class Grokily < Sinatra::Base
     redirect 'https://github.com/benjaminasmith/grokily'
   end
 
-  # Allow users to specify a language, verb, tense and subject...
-  get '/:language/:verb/:tense/:subject' do |language, verb, tense, subject|
-    begin 
-      router.process(language, verb, tense, subject)
-    rescue LanguageException 
-      halt 404
-    end
-  end
-
-  # ...or ignore the subject, if they prefer.
+  # Allow users to specify a language, verb and tense.
   get '/:language/:verb/:tense' do |language, verb, tense|
     begin 
-      router.process(language, verb, tense) or halt 404
+      router.conjugate_verb(language, verb, tense) or halt 404
     rescue LanguageException
       halt 404
     end
   end
 
   not_found do
-    "Whoops. Not found." 
+    "Page not found." 
   end
 
   run! if app_file == $0

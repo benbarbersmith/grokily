@@ -15,9 +15,9 @@ class Router
   public 
 
   # Process a user inputs by conjugating the verb and applying a subject.
-  def process(language, verb, tense, subject=false)
+  def conjugate_verb(language, verb, tense)
     lang = @languages[language] or raise LanguageException, "Language #{language} not found." 
-    lang.conjugate(verb, tense, subject)
+    lang.conjugate(verb, tense)
   end
 
 end
