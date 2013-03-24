@@ -14,27 +14,6 @@ class Language
     load_tenses file unless self.instance_of? Language
   end
 
-  public
-
-  def register_tense(key, tense)
-    @tenses[key] = tense
-  end
-
-  def verbs
-    {
-      :regular_verbs   => \
-        @verbs.values.select {|v| v unless v.irregular? }.map {|v| v.to_hash},
-      :irregular_verbs => \
-        @verbs.values.select {|v| v if v.irregular? }.map {|v| v.to_hash} 
-    }
-  end
-
-  def conjugate(verb, tense, subject=false)
-    @tenses[tense].conjugate(@verbs[verb])if has_verb? verb and has_tense? tense 
-  end
-
-  private
-
   def load_verbs file
     if @verbs.empty? 
       verb_file = File.open(File.dirname(file) + "/verbs.json") 
@@ -54,6 +33,27 @@ class Language
       Object.const_get(classname).register(self)
     } if @tenses.empty? 
   end
+
+  public
+
+  def register_tense(key, tense)
+    @tenses[key] = tense
+  end
+
+  def verbs
+    {
+      :regular_verbs   => \
+        @verbs.values.select {|v| v unless v.irregular? }.map {|v| v.to_hash},
+      :irregular_verbs => \
+        @verbs.values.select {|v| v if v.irregular? }.map {|v| v.to_hash} 
+    }
+  end
+
+  def conjugate(verb, tense, subject=false)
+    @verbs[verb].conjugate(@tenses[tense]) if has_verb? verb and has_tense? tense 
+  end
+
+  private
 
   def has_tense? tense
     @tenses.key? tense or raise TenseException, "Unknown tense #{tense}"

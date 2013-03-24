@@ -8,7 +8,7 @@ class Verb
     @english = verb[:infinitive] 
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
-      verb[:irregularities].each {|k, v| @irregularities[k] = v} 
+      verb[:irregularities].each {|d| d.each_pair {|k, v| @irregularities[k] = v } }
     end
   end
 
@@ -19,6 +19,14 @@ class Verb
   end 
 
   public 
+
+  def conjugate tense
+    if irregular?
+      @irregularities[tense.to_sym]
+    else
+      tense.regular_conjugation self
+    end
+  end
 
   def irregular?
     instance_variables.include? :@irregularities
