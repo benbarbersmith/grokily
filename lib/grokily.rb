@@ -35,9 +35,9 @@ class Grokily < Sinatra::Base
       content_type 'application/json'
       verbs.to_json
     elsif params[:format].nil? 
-      "regular verbs: " + verbs[:regular_verbs].join(", ") + \
+      "regular verbs: " + verbs[:regular_verbs].map {|v| v["infinitive"] }.join(", ") + \
       "\n\n" + \
-      "irregular verbs: " + verbs[:irregular_verbs].join(", ")
+      "irregular verbs: " + verbs[:irregular_verbs].map {|v| v["infinitive"] }.join(", ")
     else
       halt 404
     end
