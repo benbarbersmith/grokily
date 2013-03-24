@@ -10,19 +10,33 @@ describe "Grokily" do
     last_request.url.should == "https://github.com/benjaminasmith/grokily"
   end
 
-  it "exposes a list of languages on request" do
-    get '/languages'
-    last_response.should be_ok
-    last_response.header['Content-Type'].should include 'application/json'
-    JSON.parse(last_response.body).has_key "languages"
+  context "exposes a list of languages on request" do
+    it "in plaintext" do
+      get '/languages'
+      last_response.should be_ok
+      last_response.body.include? "languages:"
+    end
+    it "in json" do
+      get '/languages.json'
+      last_response.should be_ok
+      last_response.header['Content-Type'].should include 'application/json'
+      JSON.parse(last_response.body).has_key? "languages"
+    end
   end
 
-  it "exposes a list of Norwegian verbs on request" do
-    get '/norsk/verbs'
-    last_response.should be_ok
-    last_response.header['Content-Type'].should include 'application/json'
-    JSON.parse(last_response.body).has_key "regular_verbs"
-    JSON.parse(last_response.body).has_key "irregular_verbs"
+  context "exposes a list of Norwegian verbs on request" do
+    it "in plaintext" do
+      get '/norsk/verbs'
+      last_response.should be_ok
+      last_response.body.include? "regular verbs:"
+    end
+    it "in json" do
+      get '/norsk/verbs.json'
+      last_response.should be_ok
+      last_response.header['Content-Type'].should include 'application/json'
+      JSON.parse(last_response.body).has_key? "regular_verbs"
+      JSON.parse(last_response.body).has_key?"irregular_verbs"
+    end
   end
 
 end
