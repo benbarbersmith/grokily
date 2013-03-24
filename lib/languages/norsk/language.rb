@@ -10,7 +10,7 @@ class Norsk < Language
       Object.const_get(classname).register(self)
     }
     @subjects = ["Jeg", "Du", "Han", "Hun", "Vi", "De", "Den", "Det", "Dere"]
-    @verbs =  {"få" => "få"}
+    @verbs =  {}
   end
 
   def conjugate(verb, tense, subject=false)
