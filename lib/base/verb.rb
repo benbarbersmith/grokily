@@ -8,8 +8,8 @@ class Verb
     @english = verb[:english] 
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
-      verb[:irregularities].each do |d| 
-        d.each_pair {|k, v| @irregularities[k] = v } 
+      verb[:irregularities].each do |irregularity| 
+        irregularity.each_pair {|k, v| @irregularities[k] = v } 
       end
     end
   end
@@ -25,14 +25,27 @@ class Verb
   public 
 
   def conjugate tense
-    if irregular?
+    if irregular? tense
+      # Return the listed irregularity for this tense.
       @irregularities[tense.to_sym]
     else
+      # Conjugate the verb according to normal tense rules.
       tense.regular_conjugation self
     end
   end
 
-  def irregular?
-    instance_variables.include? :@irregularities
+  def irregular?(tense = false)
+    # Are there any irregularities at all? If not, there's nothing to do.
+    if instance_variables.include? :@irregularities
+      if tense
+        # A verb might be irregular, but it should not be considered to be
+        # irregular in this tense unless there are no listed irregularities.
+        not @irregularities[tense.to_sym].nil?
+      else
+        # But if we're not talking about a specific tense, it's good enough
+        # to simply know whether or not there are any irregularities at all.
+        true
+      end
+    end
   end
 end

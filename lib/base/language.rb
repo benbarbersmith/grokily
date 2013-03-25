@@ -44,10 +44,8 @@ class Language
   end
 
   def verbs
-    verbs = {
-      :regular_verbs => select_regular_verbs,
-      :irregular_verbs => select_regular_verbs(false)
-    }
+    verbs = { :regular_verbs => select_regular_verbs,
+              :irregular_verbs => select_regular_verbs(false) }
   end
 
   def conjugate(verb, tense)
