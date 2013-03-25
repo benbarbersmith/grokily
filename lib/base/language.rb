@@ -23,7 +23,7 @@ class Language
         @verbs[verb.infinitive] = verb
       end
     end
-    verbs
+    @verbs
   end
 
   def load_tenses file
@@ -34,7 +34,7 @@ class Language
         classname = "#{self.class}#{tense.capitalize}Tense"
         Object.const_get(classname).register(self)
       end
-    end 
+    end
   end
 
   public
@@ -44,19 +44,13 @@ class Language
   end
 
   def verbs
-    {
-      :regular_verbs   => \
-        (@verbs.values.select do |verb| 
-          verb unless verb.irregular? 
-        end).map {|verb| verb.to_hash},
-      :irregular_verbs => \
-        (@verbs.values.select do |verb| 
-          verb if verb.irregular? 
-        end).map {|verb| verb.to_hash} 
+    verbs = {
+      :regular_verbs => select_regular_verbs,
+      :irregular_verbs => select_regular_verbs(false)
     }
   end
 
-  def conjugate(verb, tense, subject=false)
+  def conjugate(verb, tense)
     if has_verb? verb and has_tense? tense 
       @verbs[verb].conjugate(@tenses[tense]) 
     end
@@ -65,23 +59,23 @@ class Language
   private
 
   def has_tense? tense
-    unless @tenses.key? tense 
-      raise TenseException, "Unknown tense #{tense}"
-    end
+    @tenses.key? tense or raise TenseException, "Unknown tense #{tense}"
   end
 
   def has_verb? verb
-    unless @verbs.key? verb 
-      raise VerbException, "Unknown verb #{verb}"
-    end
+    @verbs.key? verb or raise VerbException, "Unknown verb #{verb}"
   end
 
   def has_subject? subject
-    unless @subjects.any? {|s| s.upcase == subject.upcase } 
+    @subjects.any? { |s| s.upcase == subject.upcase } or \
       raise SubjectException, "Unknown subject #{subject}"
-    end
   end
 
+  def select_regular_verbs regular=true
+    @verbs.values.select do |verb| 
+       verb if verb.irregular? ^ regular
+    end.map {|verb| verb.to_hash }
+  end
 end
 
 class LanguageException < Exception

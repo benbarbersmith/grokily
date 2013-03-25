@@ -5,7 +5,7 @@ class Verb
 
   def initialize verb
     @infinitive = verb[:infinitive]
-    @english = verb[:infinitive] 
+    @english = verb[:english] 
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
       verb[:irregularities].each do |d| 
