@@ -37,8 +37,8 @@ describe "Grokily" do
       verbs = JSON.parse(last_response.body)
       (verbs.has_key? "regular_verbs").should == true
       (verbs.has_key? "irregular_verbs").should == true
-      verbs["regular_verbs"].first["infinitive"].should == "angre"
-      verbs["regular_verbs"].first["english"].should == "regret"
+      verbs["regular_verbs"].first["infinitive"].should == "arrangere"
+      verbs["regular_verbs"].first["english"].should == "arrange"
     end
   end
 

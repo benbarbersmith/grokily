@@ -31,6 +31,20 @@ describe "In the present tense, Grokily" do
     end
   end
 
+  context "conjugates the irregular verb fly to flyr" do
+    it "using present" do
+      get URI.encode '/norsk/fly/present'
+      last_response.should be_ok
+      last_response.body.should == "flyr"
+    end
+
+    it "using presens" do
+      get URI.encode '/norsk/fly/presens'
+      last_response.should be_ok
+      last_response.body.should == "flyr"
+    end
+  end
+
   context "conjugates the irregular verb finnes to finnes" do
     it "using present" do
       get URI.encode '/norsk/finnes/present'
