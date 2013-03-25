@@ -34,8 +34,10 @@ describe "Grokily" do
       get '/norsk/verbs.json'
       last_response.should be_ok
       last_response.header['Content-Type'].should include 'application/json'
-      JSON.parse(last_response.body).has_key? "regular_verbs"
-      JSON.parse(last_response.body).has_key?"irregular_verbs"
+      verbs = JSON.parse(last_response.body)
+      (verbs.has_key? "regular_verbs").should == true
+      (verbs.has_key? "irregular_verbs").should == true
+      verbs["regular_verbs"].first["english"].should == "regret"
     end
   end
 
