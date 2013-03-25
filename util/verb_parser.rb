@@ -13,45 +13,46 @@ def all_fields_match? c
 end
 
 def process_single_verb c
-  verb = {
-           :infinitive => c.fields.first, 
-           :english => c.fields.last, 
-         }
+  verb = { :infinitive => c.fields.first, 
+           :english => c.fields.last }
   if c.any? {|k, v| v.include? "*"} 
     verb[:irregularities] = []
-    c.select {|k, v| v.include? "*"}.each {|item| 
+    c.select {|k, v| v.include? "*"}.each do |item| 
       irregularity = { item.first.downcase.to_sym => item.last[2..-1] }
       verb[:irregularities] << irregularity
-    }
+    end
   end
+  verb
 end
 
 def process_multi_verb c
   verbs = []
-  unless c.fields.first.include? "/"
-    verb = {
-             :infinitive => c.fields.first, 
-             :english => c.fields.last, 
-           }
+  if not c.fields.first.include? "/"
+    verb = { :infinitive => c.fields.first, 
+             :english => c.fields.last }
     verb[:irregularities] = []
-    c.select {|k, v| v.include? "/"}.each {|item| 
-      irregularity = { item.first.downcase.to_sym => item.last.split("/") }
+    c.select {|k, v| v.include? "/"}.each do |item| 
+      irregularity = { item.first.downcase.to_sym => \
+        item.last.split("/").map {|conjugation| conjugation.strip } }
       verb[:irregularities] << irregularity
-    }
+    end
     verbs << verb
-  else if all_fields_match? c
-    [0..(c.fields.first.split("/").size-1)].each {|n|
-      verb = {
-               :infinitive => c.fields.first.split("/")[n], 
-               :english => c.fields.last.split("/")[n], 
-             }
-        verb[:irregularities] = []
-        c.select {|k, v| v.include? "/"}.each {|item| 
-          irregularity = { item.first.downcase.to_sym => item.last.split("/")[n] }
-          verb[:irregularities] << irregularity
-        }
+  else
+    infinitives = c.fields.first.split("/").size
+    (0..(infinitives-1)).each do |n|
+      verb = {}
+      verb = { :infinitive => c.fields.first.split("/")[n].strip,
+               :english => c.fields.last }
+      verb[:irregularities] = []
+      irs = c.reject {|f| if f.first == "infinitive" then f end }
+      irs = irs.select {|f| if f.last.split("/").size == infinitives then f end }
+      irs.each do |item| 
+        irregularity = { item.first.downcase.to_sym => \
+          item.last.split("/")[n].strip }
+        verb[:irregularities] << irregularity
+      end
+      verb.each_pair { |k, v| verb[k] = v.strip unless v.is_a? Array }
       verbs << verb
-    }
     end
   end
   verbs 
@@ -63,10 +64,11 @@ CSV.foreach(ARGV[0], :headers => true) do |c|
   verb = {}
   if multi_verb? c
     verb = process_multi_verb c
+    verb.each {|v| verbs << v }
   else
     verb = process_single_verb c
+    verbs << verb
   end
-  verbs << verb
 end
 
 $stdout.puts verbs.to_json
