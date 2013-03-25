@@ -87,7 +87,7 @@ describe "In the present tense, Grokily" do
     end
   end
 
-  context "conjugates the irregular verb fly to synes or flyr" do
+  context "conjugates the irregular verb fly to flyr" do
     it "using present" do
       get URI.encode '/norsk/fly/present'
       last_response.should be_ok
