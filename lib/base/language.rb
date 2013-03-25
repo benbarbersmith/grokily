@@ -18,20 +18,23 @@ class Language
     if @verbs.empty? 
       verb_file = File.open(File.dirname(file) + "/verbs.json") 
       verbs = JSON.parse(verb_file.read, :symbolize_names => true) 
-      verbs.each {|v| 
+      verbs.each do |v| 
         verb = Verb.new(v)
         @verbs[verb.infinitive] = verb
-      }
+      end
     end
+    verbs
   end
 
   def load_tenses file
-    Dir[File.dirname(file) + "/*_tense.rb"].each {|file|
-      require file
-      tense = /#{File.dirname(file)}\/(.*)_tense.rb/.match(file)[1]
-      classname = "#{self.class}#{tense.capitalize}Tense"
-      Object.const_get(classname).register(self)
-    } if @tenses.empty? 
+    if @tenses.empty?
+      Dir[File.dirname(file) + "/*_tense.rb"].each do |file|
+        require file
+        tense = /#{File.dirname(file)}\/(.*)_tense.rb/.match(file)[1]
+        classname = "#{self.class}#{tense.capitalize}Tense"
+        Object.const_get(classname).register(self)
+      end
+    end 
   end
 
   public
@@ -43,28 +46,40 @@ class Language
   def verbs
     {
       :regular_verbs   => \
-        @verbs.values.select {|v| v unless v.irregular? }.map {|v| v.to_hash},
+        (@verbs.values.select do |verb| 
+          verb unless verb.irregular? 
+        end).map {|verb| verb.to_hash},
       :irregular_verbs => \
-        @verbs.values.select {|v| v if v.irregular? }.map {|v| v.to_hash} 
+        (@verbs.values.select do |verb| 
+          verb if verb.irregular? 
+        end).map {|verb| verb.to_hash} 
     }
   end
 
   def conjugate(verb, tense, subject=false)
-    @verbs[verb].conjugate(@tenses[tense]) if has_verb? verb and has_tense? tense 
+    if has_verb? verb and has_tense? tense 
+      @verbs[verb].conjugate(@tenses[tense]) 
+    end
   end
 
   private
 
   def has_tense? tense
-    @tenses.key? tense or raise TenseException, "Unknown tense #{tense}"
+    unless @tenses.key? tense 
+      raise TenseException, "Unknown tense #{tense}"
+    end
   end
 
   def has_verb? verb
-    @verbs.key? verb or raise VerbException, "Unknown verb #{verb}"
+    unless @verbs.key? verb 
+      raise VerbException, "Unknown verb #{verb}"
+    end
   end
 
   def has_subject? subject
-    @subjects.map {|s| s.upcase }.include? subject.upcase  or raise SubjectException, "Unknown subject #{subject}"
+    unless @subjects.any? {|s| s.upcase == subject.upcase } 
+      raise SubjectException, "Unknown subject #{subject}"
+    end
   end
 
 end
