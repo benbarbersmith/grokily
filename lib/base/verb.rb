@@ -8,13 +8,17 @@ class Verb
     @english = verb[:infinitive] 
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
-      verb[:irregularities].each {|d| d.each_pair {|k, v| @irregularities[k] = v } }
+      verb[:irregularities].each do |d| 
+        d.each_pair {|k, v| @irregularities[k] = v } 
+      end
     end
   end
 
   def to_hash
     hash = {}
-    instance_variables.each {|var| hash[var.to_s.delete("@")] = instance_variable_get(var) }
+    instance_variables.each do |var| 
+      hash[var.to_s.delete("@")] = instance_variable_get(var)
+    end
     hash
   end 
 
