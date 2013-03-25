@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 class Tense
-  Qualifiers = ["(transitive)", "(intransitive)", "(seg)"]
 
   private
 
@@ -15,16 +14,12 @@ class Tense
     @keys.each {|key| language.register_tense(key, self) }
   end
 
-  def self.qualified? verb
-    Qualifiers.any? do |qual|
-      verb.infinitive.end_with? qual
+  def self.regular_conjugation verb
+    if verb.qualified?
+      verb.conjugate_with_qualifier self
+    else
+      self.specific_conjugation verb
     end
   end
 
-  def self.conjugate_with_qualifier verb
-    inf = verb.infinitive.split(" ")
-    newverb = verb.dup
-    newverb.infinitive = inf.first
-    "#{regular_conjugation(newverb)} #{inf.last}"
-  end
 end

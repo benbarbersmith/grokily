@@ -3,6 +3,8 @@
 class Verb
   attr_accessor :infinitive, :english
 
+  Qualifiers = ["(transitive)", "(intransitive)", "(seg)"]
+
   def initialize verb
     @infinitive = verb[:infinitive]
     @english = verb[:english] 
@@ -31,6 +33,19 @@ class Verb
     else
       # Conjugate the verb according to normal tense rules.
       tense.regular_conjugation self
+    end
+  end
+
+  def conjugate_with_qualifier tense
+    inf = @infinitive.split(" ")
+    newverb = self.dup
+    newverb.infinitive = inf.first
+    "#{newverb.conjugate(tense)} #{inf.last}"
+  end
+
+  def qualified? 
+    Qualifiers.any? do |qual|
+      @infinitive.end_with? qual
     end
   end
 
