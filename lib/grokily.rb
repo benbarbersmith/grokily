@@ -46,8 +46,7 @@ class Grokily < Sinatra::Base
   # Allow users to specify a language, verb and tense.
   get '/:language/:verb/:tense' do |language, verb, tense|
     begin 
-      verb = router.conjugate_verb(language, verb, tense) or halt 404
-      if verb.is_a? Array then verb.join(" / ") else verb end
+      router.conjugate_verb(language, verb, tense).flatten.join(" / ") or halt 404
     rescue LanguageException
       halt 404
     end
