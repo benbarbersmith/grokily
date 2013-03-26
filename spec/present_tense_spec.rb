@@ -115,6 +115,34 @@ describe "In the present tense, Grokily" do
     end
   end
 
+  context "conjugates the verb henge to henger (transitive) / henger (intransitive)" do
+    it "using present" do
+      get URI.encode '/norsk/henge/present'
+      last_response.should be_ok
+      last_response.body.should == "henger (transitive) / henger (intransitive)"
+    end
+
+    it "using presens" do
+      get URI.encode '/norsk/henge/presens'
+      last_response.should be_ok
+      last_response.body.should == "henger (transitive) / henger (intransitive)"
+    end
+  end
+
+  context "conjugates the (seg) verb forlove to forlover (seg)" do
+    it "using present" do
+      get URI.encode '/norsk/forlove/present'
+      last_response.should be_ok
+      last_response.body.should == "forlover (seg)"
+    end
+
+    it "using presens" do
+      get URI.encode '/norsk/forlove/presens'
+      last_response.should be_ok
+      last_response.body.should == "forlover (seg)"
+    end
+  end
+
   context "fails to conjugate an unknown verb" do
     it "using present" do
       get URI.encode '/norsk/test/present'
