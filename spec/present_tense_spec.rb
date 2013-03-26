@@ -119,13 +119,17 @@ describe "In the present tense, Grokily" do
     it "using present" do
       get URI.encode '/norsk/henge/present'
       last_response.should be_ok
-      last_response.body.should == "henger (transitive) / henger (intransitive)"
+      last_response.body.include? "henger (transitive)" and /
+      last_response.body.include? "henger (intransitive)" and /
+      last_response.body.include? " / "
     end
 
     it "using presens" do
       get URI.encode '/norsk/henge/presens'
       last_response.should be_ok
-      last_response.body.should == "henger (transitive) / henger (intransitive)"
+      last_response.body.include? "henger (transitive)" and /
+      last_response.body.include? "henger (intransitive)" and /
+      last_response.body.include? " / "
     end
   end
 
