@@ -20,7 +20,11 @@ class Language
       verbs = JSON.parse(verb_file.read, :symbolize_names => true) 
       verbs.each do |v| 
         verb = Verb.new(v)
-        @verbs[verb.infinitive] = verb
+        if @verbs.has_key? verb.infinitive
+          @verbs[verb.infinitive] << verb
+        else
+          @verbs[verb.infinitive] = [verb]
+        end
       end
     end
     @verbs
@@ -50,7 +54,10 @@ class Language
 
   def conjugate(verb, tense)
     if has_verb? verb and has_tense? tense 
-      @verbs[verb].conjugate(@tenses[tense]) 
+      conjugations = []
+      @verbs[verb].map do |v| 
+        v.conjugate(@tenses[tense])
+      end
     end
   end
 
@@ -70,9 +77,12 @@ class Language
   end
 
   def select_regular_verbs regular=true
-    @verbs.values.select do |verb| 
-       verb if verb.irregular? ^ regular
-    end.map {|verb| verb.to_hash }
+    selection = @verbs.select do |verb| 
+       @verbs[verb] if @verbs[verb].any? {|v| v.irregular? } ^ regular
+    end
+    selection.values.flatten.map do |v| 
+      v.to_hash
+    end
   end
 end
 
