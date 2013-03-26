@@ -119,17 +119,15 @@ describe "In the present tense, Grokily" do
     it "using present" do
       get URI.encode '/norsk/henge/present'
       last_response.should be_ok
-      last_response.body.include? "henger (transitive)" and /
-      last_response.body.include? "henger (intransitive)" and /
-      last_response.body.include? " / "
+      last_response.body.should =~ /henger \(transitive\)/ 
+      last_response.body.should =~ /henger \(intransitive\)/ 
     end
 
     it "using presens" do
       get URI.encode '/norsk/henge/presens'
       last_response.should be_ok
-      last_response.body.include? "henger (transitive)" and /
-      last_response.body.include? "henger (intransitive)" and /
-      last_response.body.include? " / "
+      last_response.body.should =~ /henger \(transitive\)/ 
+      last_response.body.should =~ /henger \(intransitive\)/ 
     end
   end
 
@@ -145,6 +143,23 @@ describe "In the present tense, Grokily" do
       last_response.should be_ok
       last_response.body.should == "forlover (seg)"
     end
+  end
+
+  context "conjugates the dual-meaning verb rekke into rekker (stretch) / rekker (reach, be enough)"  do
+    it "using present" do
+      get URI.encode '/norsk/rekke/present'
+      last_response.should be_ok
+      last_response.body.should =~ /rekker \(reach, be enough\)/
+      last_response.body.should =~ /rekker \(stretch\)/
+    end
+
+    it "using presens " do
+      get URI.encode '/norsk/rekke/presens'
+      last_response.should be_ok
+      last_response.body.should =~ /rekker \(reach, be enough\)/
+      last_response.body.should =~ /rekker \(stretch\)/
+    end
+
   end
 
   context "fails to conjugate an unknown verb" do
