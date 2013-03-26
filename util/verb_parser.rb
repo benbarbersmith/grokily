@@ -24,6 +24,7 @@ end
 def process_multi_verb c
   verb = { :infinitive => c.fields.first, 
            :english => c.fields[c.fields.size - 2] }
+  verb[:qualifier] = c.fields.last unless c.fields.last.nil?
   verb[:irregularities] = []
   c.select {|k, v| v.include? "/" unless v.nil? }.each do |item| 
     irregularity = { item.first.downcase.to_sym => \
