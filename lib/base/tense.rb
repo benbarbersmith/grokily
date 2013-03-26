@@ -14,12 +14,4 @@ class Tense
     @keys.each {|key| language.register_tense(key, self) }
   end
 
-  def self.regular_conjugation verb
-    if verb.qualified?
-      verb.conjugate_with_qualifier self
-    else
-      self.specific_conjugation verb
-    end
-  end
-
 end

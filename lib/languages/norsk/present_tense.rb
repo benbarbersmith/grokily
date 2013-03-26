@@ -3,7 +3,7 @@
 class NorskPresentTense < Tense
   @keys = "present", "presens"
 
-  def self.specific_conjugation verb
+  def self.regular_conjugation verb
     if verb.infinitive.end_with? "s"
       "#{verb.infinitive}"
     else

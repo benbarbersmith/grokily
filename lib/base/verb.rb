@@ -1,9 +1,7 @@
 # encoding: UTF-8
 
 class Verb
-  attr_accessor :infinitive, :english
-
-  Qualifiers = ["(transitive)", "(intransitive)", "(seg)"]
+  attr_accessor :infinitive, :english 
 
   def initialize verb
     @infinitive = verb[:infinitive]
@@ -14,6 +12,7 @@ class Verb
         irregularity.each_pair {|k, v| @irregularities[k] = v } 
       end
     end
+    if verb.has_key? :qualifier then @qualifier = verb[:qualifier] end
   end
 
   def to_hash
@@ -24,29 +23,30 @@ class Verb
     hash
   end 
 
+  def qualify conjugation 
+    "#{conjugation} (#{@qualifier})"
+  end
+
   public 
 
   def conjugate tense
+    conjugation = ""
     if irregular? tense
       # Return the listed irregularity for this tense.
-      @irregularities[tense.to_sym]
+      conjugation = @irregularities[tense.to_sym]
     else
       # Conjugate the verb according to normal tense rules.
-      tense.regular_conjugation self
+      conjugation = tense.regular_conjugation self
     end
-  end
-
-  def conjugate_with_qualifier tense
-    inf = @infinitive.split(" ")
-    newverb = self.dup
-    newverb.infinitive = inf.first
-    "#{newverb.conjugate(tense)} #{inf.last}"
+    if qualified?
+      conjugation = qualify conjugation
+    end
+    puts to_hash 
+    conjugation
   end
 
   def qualified? 
-    Qualifiers.any? do |qual|
-      @infinitive.end_with? qual
-    end
+    instance_variables.include? :@qualifier
   end
 
   def irregular?(tense = false)
