@@ -41,7 +41,6 @@ class Verb
     if qualified?
       conjugation = qualify conjugation
     end
-    puts to_hash 
     conjugation
   end
 
