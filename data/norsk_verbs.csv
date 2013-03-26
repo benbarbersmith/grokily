@@ -1,226 +1,237 @@
-"infinitive","present","past","past-perfect","english"
-"angre","angrer","angret / angra","har angret","regret"
-"arbeide","arbeider","arbeidet / arbeidde","har arbeidet / har arbeidd","work"
-"arrangere","arrangerer","arrangerte","har arrangert","arrange"
-"arve","arver","arvet / arva","har arvet","inherit"
-"be","ber","bad","har bedt","ask, request"
-"begrave","begraver","begravde / begrov","har begravd","bury"
-"begynne","begynner","begynte","har begynt","begin"
-"behandle","behandler","behandlet / behandla","har behandlet","handle, manage"
-"beholde","beholder","beholdt","har beholdt","retain, keep"
-"bestemme","bestemmer","bestemte","har bestemt","decided"
-"bestille","bestiller","bestilte","har bestilt","order"
-"besøke","besøker","besøkte","har besøkt","visit"
-"betale","betaler","betalte","har betalt","pay"
-"betrakte","betrakter","betraktet / betrakta","har betraktet / har betrakta","view, regard"
-"bety","betyr","betydde","har betydd","mean, signify"
-"bevare","bevarer","bevarte","har bevart","save, maintain"
-"bidra","bidrar","bidrog","har bedratt / bedradd","contribute"
-"binde","binder","bandt","har bundet","bind"
-"bite","biter","bet / beit","har bitt","bite"
-"blande","blander","blandet","har blandet","blend, mix"
-"bli","blir","ble / blei","har blitt","remain, become"
-"bo","bor","bodde","har bodd","dwell"
-"bre","brer","bredde / bredte","har bredd / har bredt","spread"
-"brekke","brekker","brakk","har brukket","break"
-"brenne (intransitive)","brenner","brann","har brant","burn up"
-"brenne (transitive)","brenner","brente","har brent","to set fire to"
-"bringe","bringer","brakte","har brakt","bring"
-"bruke","bruker","brukte","har brukt","use"
-"bryte","bryter","brøt / braut","har brutt","break"
-"burde","* bør","burde","burdet","should"
-"by","byr","baud / bød / bydde","har budt / bydd","bid / command"
-"bygge","bygger","bygde","har bygd","build"
-"bære","bærer","bar","har båret","bear, carry"
-"bøye","bøyer","bøyde","har bøyde","bend, conjugate"
-"danne","danner","dannet / danna","har dannet / har danna","form, create"
-"danse","danser","danset / dansa","har danset / har dansa","dance"
-"dekke","dekker","dekket / dekka","har dekket / har dekka","cover, set"
-"dele","deler","delte","har delt","divide, share"
-"dra","drar","drog","har dradd / har dratt","pull, drag, travel"
-"drepe","dreper","drepte","har drept","kill"
-"drikke","drikker","drakk","har drukket","drink"
-"drive","driver","drev / dreiv","har drevet","operate, run"
-"dyrke","dyrker","dyrket / dyrka","har dyrket / har dyrka","cultivate, raise"
-"dø","dør","dødde / døde","har dødd","die"
-"døpe","døper","døpte","har døpt","baptize"
-"eie","eier","eide / åtte","har eid / har ått","own"
-"ete","eter","åt","har ett","eat (slang)"
-"falle","faller","falt","har falt","fall"
-"finnes","finnes","fantes","har fantes","be found, exist"
-"fare","farer","for","har faret / har fart","fare, travel"
-"finne","finner","fant","har funnet","find"
-"fly / flyge","flyr","fløy / flaug","har fløyet / har flydd","fly"
-"flyte","flyter","fløt / flaut","har flytt","flow"
-"flytte","flytter","flyttet / flytta","har flyttet / har flytta","move"
-"forberede","forbereder","forberedte","har forberedt","prepare"
-"forby / forbyde","forbyr / forbyder","forbød / forbaud","har forbudt / har forbydd","forbid, prohibit"
-"forene","forener","forente","har forent","unite"
-"foretrekke","foretrekker","foretrakk","har foretrukket","prefer"
-"forklare","forklarer","forklarte","har forklart","explain"
-"forlate","forlater","forlot","har forlatt","forsake, leave"
-"forlove (seg)","forlover (seg)","forlovet (seg) / har forlova (seg)","har forlovet (seg) / har forlova (seg)","become engaged"
-"fornemme","fornemmer","fornam / fornemmet","har fornummet / har fornemmet","perceive, notice"
-"forstå","forstår","forstod","har forstått","understand"
-"forsvinne","forsvinner","forsvant","har forsvunnet","disappear"
-"forsyne","forsyner","forsynte","har forsynt","supply, provide"
-"fortelle","forteller","fortalte","har fortalt","tell, explain"
-"fryse","fryser","frøs / fraus","har frosset","freeze, feel cold"
-"følge / følgje","følger / følgjer","fulgte / følgte","har fulgt / har følgt","follow"
-"få","får","fikk","har fått","get, receive"
-"gi","gir","gav","har gitt","give"
-"gidde","gidder","gadd","har giddet","manage to do something"
-"gjelde","gjelder","gjaldt / galdt","har gjeldt","be in force, apply"
-"gjøre","* gjør","gjorde","har gjort","do"
-"glede","gleder","gledet","har gledet","please, make happy"
-"glemme","glemmer","glemte","har glemt","forget"
-"gli","glir","glei / gled","har glidd","glide"
-"glimre","glimrer","glimret","har glimret","glisten"
-"gnage","gnager","gnog / gnagde","har gnagd","gnaw"
-"gni","gnir","gnidde / gnei / gned","har gnidd","rub"
-"grave","graver","gravde / grov","har gravd","dig"
-"gre (seg)","grer (seg)","gredde (seg)","har gredd (seg)","comb one’s hair"
-"greie","greier","greide","har greid","manage, deal with"
-"gripe","griper","grep / greip","har grepet","grasp, seize"
-"gråte","gråter","gråt / gret","har grått","cry, weep"
-"gå","går","gikk","har gått","go, walk"
-"ha","har","hadde","har hatt","have"
-"handle","handler","handlet / handla","har handlet / har handla","act, shop, deal with"
-"hende","hender","hendte","har hendt","happen"
-"henge (intransitive)","henger","hang","har hengt","hang, drop"
-"henge (transitive)","henger","hengte","har hengt","hang up"
-"hente","henter","hentet / henta","har hentet / har henta","fetch, bring"
-"hete","heter","het / hette","har hett","be named"
-"heve","hever","hevde / hevet","har hevd / har hevet","raise"
-"hilse","hilser","hilste","har hilst","greet"
-"hjelpe","hjelper","hjalp","har hjulpet","help"
-"holde","holder","holdt","har holdt","keep, hold"
-"hoppe","hopper","hoppet / hoppa","har hoppet / har hoppa","hop"
-"huske","husker","husket / huska","har husket / har huska","remember"
-"hvile / kvile","hviler / kviler","hvilte / kvilte","har hvilt / har kvilt","rest"
-"høre","hører","hørte","har hørt","hear"
-"håndhilse","håndhilser","håndhilste","har håndhilst","shake hands"
-"inkludere","inkluderer","inkluderte","har inkludert","include"
-"innføre","innfører","innførte","har innført","introduce"
-"interessere","interesserer","interesserte","har interessert","interest"
-"invitere","inviterer","inviterte","har invitert","invite"
-"jobbe","jobber","jobbet . jobba","har jobbet / har jobba","work"
-"kjempe","kjemper","kjempet / kjempa","har kjempet / har kjempa","fight"
-"kjenne","kjenner","kjente","har kjent","know (person, place)"
-"kjøpe","kjøper","kjøpte","har kjøpt","purchase"
-"kjøre","kjører","kjørte","har kjørt","drive"
-"klage","klager","klaget / klaga / klagde","har klaget / har klaga / har klagd","complain"
-"klare","klarer","klarte","har klart","manage"
-"kle","kler","kledde","har kledd","dress, suit one"
-"klippe","klipper","klippet / klippa","har klippet / har klippa","cut"
-"knekke","knekker","knakk / knekte / knekket","har knekket / har knekt","crack, snap"
-"koke","koker","kokte","har kokt","boil"
-"komme","kommer","kom","har kommet","come"
-"kose","koser","koste / kosa","har kost ’ har kosa","make cozy"
-"koste","koster","kostet / kosta","har kostet / har kosta","cost, sweep"
-"kreve","krever","krevde","har krevd","demand"
-"kritisere","kritiserer","kritiserte","har kritisert","criticize"
-"krype","kryper","krøp / kraup","har krøpet","creep"
-"kunne","* kan","kunne","har kunnet","be able to"
-"kvede","kveder","kvad","har kvedet","chant, sing"
-"la","lar","lot","har latt","allow, let"
-"lage","lager","laget / laga / lagde","har laget / har laga / har lagd","make, create"
-"late","later","lot","har latt","let, allow"
-"le","ler","lo","har ledd","laugh"
-"lede","leder","ledet","har ledet","lead"
-"lege","leger","leget / legte","har leget / har legt","heal, cure"
-"legge","legge","la","har lagt","lay, place"
-"leie","leier","leide","har leid","rent"
-"leke","leker","lekte","har lekt","play"
-"lekke","lekker","lekket / lekte / lakk","har lekt / har lekket","leak"
-"lese","leser","leste","har lest","read, study"
-"leve","lever","levde","har levd","live, be alive"
-"lide / li","lider","led / lei","har lidd / har lidt","suffer, (time) wear on"
-"ligge","ligger","lå","har ligget","lie"
-"ligne / likne","ligner / likner","lignet / ligna / liknet / likna","har lignet / har ligna / har liknet / har likna","resemble, look like"
-"like","liker","likte","har likt","like"
-"love","lover","lovet / lova / lovte / lovde","har lovt / har lovet / har lova /har lovd","promise, praise"
-"lukke","lukker","lukket / lukka","har lukket / har lukka","shut"
-"lukte","lukter","luktet / lukta","har luktet / har lukta","smell"
-"lure","lurer","lurte","har lurt","wonder, dupe"
-"lytte","lytter","lyttet / lytta","har lyttet / har lytta","listen"
-"lyve / lyge / ljuge","lyver / lyger / ljuger","løy / laug","løyet","lie, fib"
-"lære","lærer","lærte","har lært","learn, teach"
-"løpe","løper","løp","har løpt / har løpet","run"
-"låne","låner","lånte","har lånt","lend, borrow"
-"male","maler","malte","har malt","paint, purr"
-"melde","melder","meldte","har meldt","announce, report"
-"mene","mener","mente","har ment","think, be of the opinion"
-"merke","merker","merket / merka","har merket / har merka","mark"
-"misbruke","misbruker","misbrukte","har misbrukt","misuse, abuse"
-"mislike","misliker","mislikte","har mislikt","dislike"
-"motta","mottar","mottok","har mottatt","receive"
-"møte","møter","møtte","har møtt","meet"
-"måtte","* må","måtte","har måttet","have to, be obliged to"
-"nyte","nyter","nøt / naut","har nøtt","enjoy"
-"pipe","piper","pep","har pepet","whistle, pipe"
-"prøve","prøver","prøvde","har prøvd","try, attempt"
-"reise","reiser","reiste","har reist","travel, raise"
-"rekke","rekker","rakk","har rukket","reach, be enough"
-"rekke","rekker","rakte","har rakt","stretch"
-"ri / ride","rir","rei / red","har ridd","ride (horse)"
-"rive","river","rev / reiv","har revet","tear apart"
-"ryke","ryker","røk / rauk","har røket","send out smoke, steam"
-"røyke / røke","røyker / røker","røykte / røkte","har røykt / har røkt","smoke (a cigarette)"
-"se","ser","så","har sett","see"
-"selge","selger","solgte","har solgt","sell"
-"sende","sender","sendte","har sendt","send"
-"sette","setter","satte","har satt","set, place"
-"si","* sier","sa","har sagt","say, tell"
-"sige","siger","seig","har seget","sink"
-"sitte","sitter","satt","har sittet","sit"
-"skje","skjer","skjedde","har skjedd","happen"
-"skjelve","skjelver","skalv","har skjelvet","shake, tremble"
-"skjære","skjærer","skar","har skåret","cut"
-"skli","sklir","sklei / sklidde","har sklidd","slide"
-"skrike","skriker","skrek / skreik","har skreket","scream"
-"skrive","skriver","skrev","har skrevet","write"
-"skulle","* skal","skulle","har skullet","should, shall"
-"skvette","skvetter","skvatt","har skvettet","start suddenly"
-"skyte","skyter","skjøt / skaut","har skutt","shoot"
-"skyve","skyver","skjøv / skauv","har skjøvet","shove"
-"slippe / sleppe","slipper / slepper","slapp","har sloppet","let go"
-"slite","sliter","slet / sleit","har slitt","toil, wear out"
-"slå","slår","slo","har slått","hit, strike"
-"slåss","* slåss","sloss","har slåss","fight"
-"smøre","smører","smurte","har smurt","butter, smear"
-"sove","sover","sov","har sovet","sleep"
-"sprekke","sprekker","sprakk","har sprukket","burst, split"
-"springe","springer","sprang","har sprunget","jump"
-"spørre","* spør","spurte","har spurt","ask"
-"stige","stiger","steg / steig","har steget","climb"
-"stikke","stikker","stakk","har stukket","stick, stab"
-"stjele","stjeler","stjal","har stålet","steal"
-"stryke","stryker","strøk / strauk","har strøket","strike, iron, remove, fall"
-"stå","står","stod","har stått","stand, stand up"
-"svi","svir","sved / svidde / svei","har svidd","burn, suffer"
-"svike","sviker","svek / sveik","har sveket","betray, disappoint"
-"synes","* synes / syns","syntes","har synes / har syns","seem, think, be visible"
-"synge","synger","sang","har sunget","sing"
-"synke","synker","sank","har sunket","sink"
-"søke","søker","søkte","har søkt","seek"
-"ta","tar","tok","har tatt","take"
-"telle","teller","talte","har talt","count"
-"tenke","tenker","tenkte","har tenkt","think, intend"
-"tigge","tigger","tagg","har tigget","beg, implore"
-"tore","* tør","torde","har tort","dare"
-"treffe","treffer","traff","har truffet","meet, hit"
-"trekke","trekker","trakk","har trukket","drag, pull"
-"trives","trives","trivdes","har trives / har trivs","enjoy, thrive"
-"tro","tror","trodde","har trodd","believe"
-"tvile","tviler","tvilte","har tvilt","doubt"
-"tvinge","tvinger","tvang","har tvunget","force"
-"velge","velger","valgte","har valgt","choose, elect"
-"vente","venter","ventet","har ventet","wait, expect"
-"ville","* vil","ville","har villet","want to, will"
-"vinne","vinner","vant","har vunnet","win, gain"
-"vise","viser","viste","har vist","show"
-"vite","* vet","visste","har visst","know (fact)"
-"være","* er","var","har vært","be, exist"
-"ønske","ønsker","ønsket / ønska","har ønsket / har ønska","wish, desire"
-"åpne","åpner","åpnet / åpna","har åpnet / har åpna","open"
+"infinitive","present","past","past-perfect","english","qualifier"
+"angre","angrer","angret / angra","har angret","regret",
+"arbeide","arbeider","arbeidet / arbeidde","har arbeidet / har arbeidd","work",
+"arrangere","arrangerer","arrangerte","har arrangert","arrange",
+"arve","arver","arvet / arva","har arvet","inherit",
+"be","ber","bad","har bedt","ask, request",
+"begrave","begraver","begravde / begrov","har begravd","bury",
+"begynne","begynner","begynte","har begynt","begin",
+"behandle","behandler","behandlet / behandla","har behandlet","handle, manage",
+"beholde","beholder","beholdt","har beholdt","retain, keep",
+"bestemme","bestemmer","bestemte","har bestemt","decided",
+"bestille","bestiller","bestilte","har bestilt","order",
+"besøke","besøker","besøkte","har besøkt","visit",
+"betale","betaler","betalte","har betalt","pay",
+"betrakte","betrakter","betraktet / betrakta","har betraktet / har betrakta","view, regard",
+"bety","betyr","betydde","har betydd","mean, signify",
+"bevare","bevarer","bevarte","har bevart","save, maintain",
+"bidra","bidrar","bidrog","har bedratt / bedradd","contribute",
+"binde","binder","bandt","har bundet","bind",
+"bite","biter","bet / beit","har bitt","bite",
+"blande","blander","blandet","har blandet","blend, mix",
+"bli","blir","ble / blei","har blitt","remain, become",
+"bo","bor","bodde","har bodd","dwell",
+"bre","brer","bredde / bredte","har bredd / har bredt","spread",
+"brekke","brekker","brakk","har brukket","break",
+"brenne","brenner","brann","har brant","burn up","intransitive"
+"brenne","brenner","brente","har brent","to set fire to","transitive"
+"bringe","bringer","brakte","har brakt","bring",
+"bruke","bruker","brukte","har brukt","use",
+"bryte","bryter","brøt / braut","har brutt","break",
+"burde","* bør","burde","burdet","should",
+"by","byr","baud / bød / bydde","har budt / bydd","bid / command",
+"bygge","bygger","bygde","har bygd","build",
+"bære","bærer","bar","har båret","bear, carry",
+"bøye","bøyer","bøyde","har bøyde","bend, conjugate",
+"danne","danner","dannet / danna","har dannet / har danna","form, create",
+"danse","danser","danset / dansa","har danset / har dansa","dance",
+"dekke","dekker","dekket / dekka","har dekket / har dekka","cover, set",
+"dele","deler","delte","har delt","divide, share",
+"dra","drar","drog","har dradd / har dratt","pull, drag, travel",
+"drepe","dreper","drepte","har drept","kill",
+"drikke","drikker","drakk","har drukket","drink",
+"drive","driver","drev / dreiv","har drevet","operate, run",
+"dyrke","dyrker","dyrket / dyrka","har dyrket / har dyrka","cultivate, raise",
+"dø","dør","dødde / døde","har dødd","die",
+"døpe","døper","døpte","har døpt","baptize",
+"eie","eier","eide / åtte","har eid / har ått","own",
+"ete","eter","åt","har ett","eat (slang)",
+"falle","faller","falt","har falt","fall",
+"finnes","finnes","fantes","har fantes","be found, exist",
+"fare","farer","for","har faret / har fart","fare, travel",
+"finne","finner","fant","har funnet","find",
+"flyge","* flyr","flaug","har flydd","fly",
+"fly","flyr","fløy","har fløyet","fly",
+"flyte","flyter","fløt / flaut","har flytt","flow",
+"flytte","flytter","flyttet / flytta","har flyttet / har flytta","move",
+"forberede","forbereder","forberedte","har forberedt","prepare",
+"forby","forbyr","forbød","har forbudt","forbid, prohibit",
+"forbyde","forbyder","forbaud","har forbydd","forbid, prohibit",
+"forene","forener","forente","har forent","unite",
+"foretrekke","foretrekker","foretrakk","har foretrukket","prefer",
+"forklare","forklarer","forklarte","har forklart","explain",
+"forlate","forlater","forlot","har forlatt","forsake, leave",
+"forlove","forlover","forlovet / har forlova","har forlovet / har forlova","become engaged","seg"
+"fornemme","fornemmer","fornam / fornemmet","har fornummet / har fornemmet","perceive, notice",
+"forstå","forstår","forstod","har forstått","understand",
+"forsvinne","forsvinner","forsvant","har forsvunnet","disappear",
+"forsyne","forsyner","forsynte","har forsynt","supply, provide",
+"fortelle","forteller","fortalte","har fortalt","tell, explain",
+"fryse","fryser","frøs / fraus","har frosset","freeze, feel cold",
+"følge","følger","fulgte","har fulgt","follow",
+"følgje","følgjer","følgte","har følgt","follow",
+"få","får","fikk","har fått","get, receive",
+"gi","gir","gav","har gitt","give",
+"gidde","gidder","gadd","har giddet","manage to do something",
+"gjelde","gjelder","gjaldt / galdt","har gjeldt","be in force, apply",
+"gjøre","* gjør","gjorde","har gjort","do",
+"glede","gleder","gledet","har gledet","please, make happy",
+"glemme","glemmer","glemte","har glemt","forget",
+"gli","glir","glei / gled","har glidd","glide",
+"glimre","glimrer","glimret","har glimret","glisten",
+"gnage","gnager","gnog / gnagde","har gnagd","gnaw",
+"gni","gnir","gnidde / gnei / gned","har gnidd","rub",
+"grave","graver","gravde / grov","har gravd","dig",
+"gre","grer","gredde","har gredd","comb one’s hair","seg"
+"greie","greier","greide","har greid","manage, deal with",
+"gripe","griper","grep / greip","har grepet","grasp, seize",
+"gråte","gråter","gråt / gret","har grått","cry, weep",
+"gå","går","gikk","har gått","go, walk",
+"ha","har","hadde","har hatt","have",
+"handle","handler","handlet / handla","har handlet / har handla","act, shop, deal with",
+"hende","hender","hendte","har hendt","happen",
+"henge","henger","hang","har hengt","hang, drop","intransitive"
+"henge","henger","hengte","har hengt","hang up","transitive"
+"hente","henter","hentet / henta","har hentet / har henta","fetch, bring",
+"hete","heter","het / hette","har hett","be named",
+"heve","hever","hevde / hevet","har hevd / har hevet","raise",
+"hilse","hilser","hilste","har hilst","greet",
+"hjelpe","hjelper","hjalp","har hjulpet","help",
+"holde","holder","holdt","har holdt","keep, hold",
+"hoppe","hopper","hoppet / hoppa","har hoppet / har hoppa","hop",
+"huske","husker","husket / huska","har husket / har huska","remember",
+"hvile","hviler","hvilte","har hvilt","rest",
+"kvile","kviler","kvilte","har kvilt","rest",
+"høre","hører","hørte","har hørt","hear",
+"håndhilse","håndhilser","håndhilste","har håndhilst","shake hands",
+"inkludere","inkluderer","inkluderte","har inkludert","include",
+"innføre","innfører","innførte","har innført","introduce",
+"interessere","interesserer","interesserte","har interessert","interest",
+"invitere","inviterer","inviterte","har invitert","invite",
+"jobbe","jobber","jobbet . jobba","har jobbet / har jobba","work",
+"kjempe","kjemper","kjempet / kjempa","har kjempet / har kjempa","fight",
+"kjenne","kjenner","kjente","har kjent","know (person, place)",
+"kjøpe","kjøper","kjøpte","har kjøpt","purchase",
+"kjøre","kjører","kjørte","har kjørt","drive",
+"klage","klager","klaget / klaga / klagde","har klaget / har klaga / har klagd","complain",
+"klare","klarer","klarte","har klart","manage",
+"kle","kler","kledde","har kledd","dress, suit one",
+"klippe","klipper","klippet / klippa","har klippet / har klippa","cut",
+"knekke","knekker","knakk / knekte / knekket","har knekket / har knekt","crack, snap",
+"koke","koker","kokte","har kokt","boil",
+"komme","kommer","kom","har kommet","come",
+"kose","koser","koste / kosa","har kost ’ har kosa","make cozy",
+"koste","koster","kostet / kosta","har kostet / har kosta","cost, sweep",
+"kreve","krever","krevde","har krevd","demand",
+"kritisere","kritiserer","kritiserte","har kritisert","criticize",
+"krype","kryper","krøp / kraup","har krøpet","creep",
+"kunne","* kan","kunne","har kunnet","be able to",
+"kvede","kveder","kvad","har kvedet","chant, sing",
+"la","lar","lot","har latt","allow, let",
+"lage","lager","laget / laga / lagde","har laget / har laga / har lagd","make, create",
+"late","later","lot","har latt","let, allow",
+"le","ler","lo","har ledd","laugh",
+"lede","leder","ledet","har ledet","lead",
+"lege","leger","leget / legte","har leget / har legt","heal, cure",
+"legge","legge","la","har lagt","lay, place",
+"leie","leier","leide","har leid","rent",
+"leke","leker","lekte","har lekt","play",
+"lekke","lekker","lekket / lekte / lakk","har lekt / har lekket","leak",
+"lese","leser","leste","har lest","read, study",
+"leve","lever","levde","har levd","live, be alive",
+"lide","lider","led","har lidd","suffer, (time) wear on",
+"li","* lider","lei","har lidt","suffer, (time) wear on",
+"ligge","ligger","lå","har ligget","lie",
+"ligne","ligner","lignet / ligna","har lignet / har ligna","resemble, look like",
+"likne","likner","liknet / likna","har liknet / har likna","resemble, look like",
+"like","liker","likte","har likt","like",
+"love","lover","lovet / lova / lovte / lovde","har lovt / har lovet / har lova /har lovd","promise, praise",
+"lukke","lukker","lukket / lukka","har lukket / har lukka","shut",
+"lukte","lukter","luktet / lukta","har luktet / har lukta","smell",
+"lure","lurer","lurte","har lurt","wonder, dupe",
+"lytte","lytter","lyttet / lytta","har lyttet / har lytta","listen",
+"lyve","lyver","løy","løyet","lie, fib",
+"lyge","lyger","løy","løyet","lie, fib",
+"ljuge","ljuger","laug","løyet","lie, fib",
+"lære","lærer","lærte","har lært","learn, teach",
+"løpe","løper","løp","har løpt / har løpet","run",
+"låne","låner","lånte","har lånt","lend, borrow",
+"male","maler","malte","har malt","paint, purr",
+"melde","melder","meldte","har meldt","announce, report",
+"mene","mener","mente","har ment","think, be of the opinion",
+"merke","merker","merket / merka","har merket / har merka","mark",
+"misbruke","misbruker","misbrukte","har misbrukt","misuse, abuse",
+"mislike","misliker","mislikte","har mislikt","dislike",
+"motta","mottar","mottok","har mottatt","receive",
+"møte","møter","møtte","har møtt","meet",
+"måtte","* må","måtte","har måttet","have to, be obliged to",
+"nyte","nyter","nøt / naut","har nøtt","enjoy",
+"pipe","piper","pep","har pepet","whistle, pipe",
+"prøve","prøver","prøvde","har prøvd","try, attempt",
+"reise","reiser","reiste","har reist","travel, raise",
+"rekke","rekker","rakk","har rukket","reach, be enough",
+"rekke","rekker","rakte","har rakt","stretch",
+"ride","* rir","rei","har ridd","ride (horse)",
+"ri","rir","red","har ridd","ride (horse)",
+"rive","river","rev / reiv","har revet","tear apart",
+"ryke","ryker","røk / rauk","har røket","send out smoke, steam",
+"røke","røker","røkte","har røkt","smoke (a cigarette)",
+"røyke","røyker","røykte","har røykt","smoke (a cigarette)",
+"se","ser","så","har sett","see",
+"selge","selger","solgte","har solgt","sell",
+"sende","sender","sendte","har sendt","send",
+"sette","setter","satte","har satt","set, place",
+"si","* sier","sa","har sagt","say, tell",
+"sige","siger","seig","har seget","sink",
+"sitte","sitter","satt","har sittet","sit",
+"skje","skjer","skjedde","har skjedd","happen",
+"skjelve","skjelver","skalv","har skjelvet","shake, tremble",
+"skjære","skjærer","skar","har skåret","cut",
+"skli","sklir","sklei / sklidde","har sklidd","slide",
+"skrike","skriker","skrek / skreik","har skreket","scream",
+"skrive","skriver","skrev","har skrevet","write",
+"skulle","* skal","skulle","har skullet","should, shall",
+"skvette","skvetter","skvatt","har skvettet","start suddenly",
+"skyte","skyter","skjøt / skaut","har skutt","shoot",
+"skyve","skyver","skjøv / skauv","har skjøvet","shove",
+"sleppe","slepper","slapp","har sloppet","let go",
+"slippe","slipper","slapp","har sloppet","let go",
+"slite","sliter","slet / sleit","har slitt","toil, wear out",
+"slå","slår","slo","har slått","hit, strike",
+"slåss","* slåss","sloss","har slåss","fight",
+"smøre","smører","smurte","har smurt","butter, smear",
+"sove","sover","sov","har sovet","sleep",
+"sprekke","sprekker","sprakk","har sprukket","burst, split",
+"springe","springer","sprang","har sprunget","jump",
+"spørre","* spør","spurte","har spurt","ask",
+"stige","stiger","steg / steig","har steget","climb",
+"stikke","stikker","stakk","har stukket","stick, stab",
+"stjele","stjeler","stjal","har stålet","steal",
+"stryke","stryker","strøk / strauk","har strøket","strike, iron, remove, fall",
+"stå","står","stod","har stått","stand, stand up",
+"svi","svir","sved / svidde / svei","har svidd","burn, suffer",
+"svike","sviker","svek / sveik","har sveket","betray, disappoint",
+"synes","* synes / syns","syntes","har synes / har syns","seem, think, be visible",
+"synge","synger","sang","har sunget","sing",
+"synke","synker","sank","har sunket","sink",
+"søke","søker","søkte","har søkt","seek",
+"ta","tar","tok","har tatt","take",
+"telle","teller","talte","har talt","count",
+"tenke","tenker","tenkte","har tenkt","think, intend",
+"tigge","tigger","tagg","har tigget","beg, implore",
+"tore","* tør","torde","har tort","dare",
+"treffe","treffer","traff","har truffet","meet, hit",
+"trekke","trekker","trakk","har trukket","drag, pull",
+"trives","trives","trivdes","har trives / har trivs","enjoy, thrive",
+"tro","tror","trodde","har trodd","believe",
+"tvile","tviler","tvilte","har tvilt","doubt",
+"tvinge","tvinger","tvang","har tvunget","force",
+"velge","velger","valgte","har valgt","choose, elect",
+"vente","venter","ventet","har ventet","wait, expect",
+"ville","* vil","ville","har villet","want to, will",
+"vinne","vinner","vant","har vunnet","win, gain",
+"vise","viser","viste","har vist","show",
+"vite","* vet","visste","har visst","know (fact)",
+"være","* er","var","har vært","be, exist",
+"ønske","ønsker","ønsket / ønska","har ønsket / har ønska","wish, desire",
+"åpne","åpner","åpnet / åpna","har åpnet / har åpna","open",
