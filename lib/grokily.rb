@@ -37,7 +37,7 @@ class Grokily < Sinatra::Base
   end
   
   # Allow users to specify a language, verb and tense.
-  get '/:language/:verb/:tense.?:json?' do |language, verb, tense, format|
+  get '/:language/:verb/:tense.?:format?' do |language, verb, tense, format|
     begin
       process(format, "conjugations", \
               router.conjugate_verb(language, verb, tense)) 
