@@ -10,9 +10,10 @@ def process(format, qualifier, result)
     result.map { |r| r.to_s }.join(", ")
   elsif format == "json"
     content_type 'application/json'
-    { qualifier => result.map do |r| 
+    result = { qualifier => result.map do |r| 
       if r.methods.include? :to_hash then r.to_hash else r end
-    end }.to_json
+    end }
+    JSON.pretty_generate(result)
   else
     halt 404
   end
