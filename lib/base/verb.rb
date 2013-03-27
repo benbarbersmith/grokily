@@ -15,7 +15,7 @@ class Verb
     if verb.has_key? :qualifier then @qualifier = verb[:qualifier] end
   end
 
-  def to_string
+  def to_s
     self.infinitive 
   end
 
