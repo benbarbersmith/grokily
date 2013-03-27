@@ -14,4 +14,11 @@ class Tense
     @keys.each {|key| language.register_tense(key, self) }
   end
 
+  def self.to_hash
+    { @keys[0] => @keys }
+  end
+
+  def self.to_s
+    @keys.join(", ")
+  end
 end
