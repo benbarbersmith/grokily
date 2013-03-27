@@ -15,6 +15,10 @@ class Verb
     if verb.has_key? :qualifier then @qualifier = verb[:qualifier] end
   end
 
+  def to_string
+    self.infinitive 
+  end
+
   def to_hash
     hash = {}
     instance_variables.each do |var| 

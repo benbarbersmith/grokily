@@ -33,10 +33,10 @@ class Grokily < Sinatra::Base
     verbs = router.list_verbs(language)
     if format.nil? 
       "regular verbs: " + \
-      verbs[:regular_verbs].map {|v| v["infinitive"] }.join(", ") + \
+      verbs[:regular_verbs].map {|v| v.to_s }.join(", ") + \
       "\n\n" + \
       "irregular verbs: " + \
-      verbs[:irregular_verbs].map {|v| v["infinitive"] }.join(", ")
+      verbs[:irregular_verbs].map {|v| v.to_s }.join(", ")
     elsif format == "json"
       content_type 'application/json'
       verbs.to_json
