@@ -4,12 +4,22 @@ require 'json'
 require_relative 'base/language'
 require_relative 'router'
 
+def process(format, qualifier, result)
+  if format.nil? 
+    content_type 'text/plain'
+    result.map { |r| r.to_s }.join(", ")
+  elsif format == "json"
+    content_type 'application/json'
+    { qualifier => result.map do |r| 
+      if r.methods.include? :to_hash then r.to_hash else r end
+    end }.to_json
+  else
+    halt 404
+  end
+end
+
 class Grokily < Sinatra::Base
   router = Router.new
-
-  before do
-    content_type 'text/plain'
-  end
 
   # Not using the API? Just redirect to Github.
   get '/' do
@@ -17,50 +27,23 @@ class Grokily < Sinatra::Base
   end
 
   # See which languages are available.
-  get '/languages.?:format?' do
-    if params[:format] == "json"
-      content_type 'application/json'
-      {"languages" => router.languages}.to_json
-    elsif params[:format].nil? 
-      "languages: " + router.languages.join(", ")
-    else
-      halt 404
-    end
+  get '/languages.?:format?' do |format|
+    process(format, "languages", router.languages)
   end
 
   # See which verbs are available in the specified language.
   get '/:language/verbs.?:format?' do |language, format|
-    verbs = router.list_verbs(language)
-    if format.nil? 
-      "regular verbs: " + \
-      verbs[:regular_verbs].map {|v| v.to_s }.join(", ") + \
-      "\n\n" + \
-      "irregular verbs: " + \
-      verbs[:irregular_verbs].map {|v| v.to_s }.join(", ")
-    elsif format == "json"
-      content_type 'application/json'
-      verbs.to_json
-    else
-      halt 404
-    end
+    process(format, "verbs", router.list_verbs(language)) 
   end
   
   # Allow users to specify a language, verb and tense.
   get '/:language/:verb/:tense.?:json?' do |language, verb, tense, format|
-    begin 
-      conjugations = router.conjugate_verb(language, verb, tense) or halt 404
-    rescue LanguageException
+    begin
+      process(format, "conjugations", \
+              router.conjugate_verb(language, verb, tense)) 
+    rescue VerbException
       halt 404
     end
-    if format.nil? 
-      conjugations.join(" / ")
-    elsif format == "json"
-      content_type 'application/json'
-      conjugations.map {|c| c.to_hash }.to_json
-    else
-      halt 404
-    end
-
   end
  
   not_found do
