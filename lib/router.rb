@@ -21,8 +21,7 @@ class Router
 
   # Return a list of verbs available for a given language.
   def list_verbs(language)
-    lang = @languages[language] or raise LanguageException, "Language #{language} not found." 
-    lang.verbs
+    @languages[language].verbs or raise LanguageException, "Language #{language} not found." 
   end
 
   # Process a user inputs by conjugating the verb and applying a subject.
