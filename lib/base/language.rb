@@ -49,8 +49,7 @@ class Language
   end
 
   def verbs
-    verbs = { :regular_verbs => select_regular_verbs,
-              :irregular_verbs => select_regular_verbs(false) }
+    @verbs.values.flatten
   end
 
   def conjugate(verb, tense)
@@ -79,13 +78,6 @@ class Language
   def has_subject? subject
     @subjects.any? { |s| s.upcase == subject.upcase } or \
       raise SubjectException, "Unknown subject #{subject}"
-  end
-
-  def select_regular_verbs regular=true
-    selection = @verbs.select do |verb| 
-       @verbs[verb] if @verbs[verb].any? { |v| v.irregular? } ^ regular
-    end
-    selection.values.flatten.map { |v| v.to_hash }
   end
 
   def any_the_same array
