@@ -35,12 +35,12 @@ describe "Grokily" do
       get '/norsk/tenses.json'
       last_response.should be_ok
       last_response.header['Content-Type'].should include 'application/json'
-      response = JSON.parse(last_response.body)
-      responses.has_key?("tenses").should == true
-      tenses = responses["tenses"]
-      tenses["present"].nil?.should != true
-      tenses["present"].include?("present").should == true
-      tenses["present"].include?("presens").should == true
+      tenses = JSON.parse(last_response.body)
+      tenses.has_key?("tenses").should == true
+      tenses["tenses"].any? { |t| t.has_key?("present") }.should == true
+      present = tenses["tenses"].select { |t| t.has_key?("present") }.first["present"]
+      present.include?("present").should == true
+      present.include?("present").should == true
     end
   end
 
