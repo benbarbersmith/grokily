@@ -14,13 +14,13 @@ describe "Grokily" do
     it "in plaintext" do
       get '/languages'
       last_response.should be_ok
-      last_response.body.include? "languages:"
+      last_response.body.should =~ /norsk/
     end
     it "in json" do
       get '/languages.json'
       last_response.should be_ok
       last_response.header['Content-Type'].should include 'application/json'
-      JSON.parse(last_response.body).has_key? "languages"
+      JSON.parse(last_response.body).has_key?("languages").should == true
     end
   end
 
@@ -28,17 +28,17 @@ describe "Grokily" do
     it "in plaintext" do
       get '/norsk/verbs'
       last_response.should be_ok
-      last_response.body.include? "regular verbs:"
+      last_response.body.should =~ /arrangere/
+      last_response.body.should =~ /gre/
     end
     it "in json" do
       get '/norsk/verbs.json'
       last_response.should be_ok
       last_response.header['Content-Type'].should include 'application/json'
       verbs = JSON.parse(last_response.body)
-      (verbs.has_key? "regular_verbs").should == true
-      (verbs.has_key? "irregular_verbs").should == true
-      verbs["regular_verbs"].first["infinitive"].should == "arrangere"
-      verbs["regular_verbs"].first["english"].should == "arrange"
+      verbs.has_key?("verbs").should == true
+      verbs["verbs"].any? { |v| v["infinitive"] == "arrangere" }.should == true
+      verbs["verbs"].any? { |v| v["english"] == "arrange" }.should == true
     end
   end
 
