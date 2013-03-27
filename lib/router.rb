@@ -21,13 +21,20 @@ class Router
 
   # Return a list of verbs available for a given language.
   def list_verbs(language)
-    @languages[language].verbs or raise LanguageException, "Language #{language} not found." 
+    @languages[language].verbs or \
+      raise LanguageException, "Language #{language} not found." 
+  end
+
+  # Return a list of tenses available for a given language.
+  def list_tenses(language)
+    @languages[language].tenses or \
+      raise LanguageException, "Language #{language} not found." 
   end
 
   # Process a user inputs by conjugating the verb and applying a subject.
   def conjugate_verb(language, verb, tense)
-    lang = @languages[language] or raise LanguageException, "Language #{language} not found." 
-    lang.conjugate(verb, tense)
+    @languages[language].conjugate(verb, tense) or \
+      raise LanguageException, "Language #{language} not found." 
   end
 
 end

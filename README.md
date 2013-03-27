@@ -21,8 +21,28 @@ Usage
 -----
 
 Assuming that you're running on the default host and port, all URLs start
-with `http://localhost:4567/norsk/` followed by the infinitive and the
-tense. For example, you could try:
+with `http://localhost:4567/`.
+
+You can see a list of availabe languages at:
+
+    http://localhost:4567/languages
+    http://localhost:4567/languages.json
+
+You can see a list of supported verbs for any given language at:
+
+    http://localhost:4567/norsk/verbs
+    http://localhost:4567/norsk/verbs.json
+
+You can see a list of available tenses for any given language at: 
+
+    http://localhost:4567/norsk/tenses
+    http://localhost:4567/norsk/tenses.json
+
+Tenses can be specified using English or Norsk. 
+
+Once you've picked a language, verb and tense, you can ask Grokily to
+conjugate it. To do so, start with `http://localhost:4567/norsk/` followed
+by the verb infinitive and the tense. For example, you could try:
 
     http://localhost:4567/norsk/be/presens
 
@@ -32,21 +52,15 @@ tense. For example, you could try:
 
     http://localhost:4567/norsk/glede/present
 
-Tenses can be specified using English or Norsk. Available tenses are:
-
-* `present` / `presens`
-
-See a list of availabe languages at
-`http://localhost:4567/languages`.
-
-See a list of supported verbs for any
-given language at `http://localhost:4567/norsk/verbs` (or equivalent). 
-
-You can append `.json` to any of the aforementioned URLs to get a JSON
-response rather than plain text. 
+As before, you can append `.json` to any of the aforementioned URLs to get
+a JSON response rather than plain text. 
 
 Roadmap
 -------
+
+At present, available tenses are:
+
+* `present` / `presens`
 
 In due course, the API will be extended to include additional tenses:
 

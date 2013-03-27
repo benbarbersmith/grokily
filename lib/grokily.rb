@@ -37,6 +37,11 @@ class Grokily < Sinatra::Base
     process(format, "verbs", router.list_verbs(language)) 
   end
   
+  # See which tenses are available in the specified language.
+  get '/:language/tenses.?:format?' do |language, format|
+    process(format, "tenses", router.list_tenses(language)) 
+  end
+
   # Allow users to specify a language, verb and tense.
   get '/:language/:verb/:tense.?:format?' do |language, verb, tense, format|
     begin

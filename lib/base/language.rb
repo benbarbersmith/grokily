@@ -52,6 +52,10 @@ class Language
     @verbs.values.flatten
   end
 
+  def tenses
+    @tenses.values.uniq
+  end
+
   def conjugate(verb, tense)
     if has_verb? verb and has_tense? tense 
       conjugations = @verbs[verb].map do |v| 
