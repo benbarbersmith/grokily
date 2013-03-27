@@ -3,6 +3,7 @@
 require 'json'
 require_relative 'tense'
 require_relative 'verb'
+require_relative 'conjugation'
 
 class Language
   private
@@ -53,11 +54,18 @@ class Language
   end
 
   def conjugate(verb, tense)
+    conjugations = []
     if has_verb? verb and has_tense? tense 
-      conjugations = []
-      @verbs[verb].map do |v| 
+      conjugations = @verbs[verb].map do |v| 
         v.conjugate(@tenses[tense])
       end
+    end
+    results = []
+    conjugations.each { |c| results << c.to_s }
+    if results.size > 1 and any_the_same results
+      conjugations = conjugations.map {|c| c.qualify }
+    else
+      conjugations.map { |c| if c.verb.qualified? then c.qualify else c end }
     end
   end
 
@@ -83,6 +91,10 @@ class Language
     selection.values.flatten.map do |v| 
       v.to_hash
     end
+  end
+
+  def any_the_same array
+    array.any? { |r| array.count(r) > 1 }
   end
 end
 

@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class Verb
-  attr_accessor :infinitive, :english 
+  attr_accessor :infinitive, :english
 
   def initialize verb
     @infinitive = verb[:infinitive]
@@ -23,29 +23,24 @@ class Verb
     hash
   end 
 
-  def qualify conjugation 
-    "#{conjugation} (#{@qualifier})"
-  end
-
   public 
 
   def conjugate tense
-    conjugation = ""
     if irregular? tense
       # Return the listed irregularity for this tense.
-      conjugation = @irregularities[tense.to_sym]
+      Conjugation.new(self, @irregularities[tense.to_sym])
     else
       # Conjugate the verb according to normal tense rules.
-      conjugation = tense.regular_conjugation self
+      Conjugation.new(self, tense.regular_conjugation(self))
     end
-    if qualified?
-      conjugation = qualify conjugation
-    end
-    conjugation
   end
 
   def qualified? 
     instance_variables.include? :@qualifier
+  end
+
+  def qualifier
+    if qualified? then @qualifier end
   end
 
   def irregular?(tense = false)
