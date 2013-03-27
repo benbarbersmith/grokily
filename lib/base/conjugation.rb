@@ -14,7 +14,7 @@ class Conjugation
   end
 
   def to_hash
-    { :verb => verb.to_hash, :conjugation => qualified_conjugation }
+    { :verb => verb.to_s, :conjugation => qualified_conjugation }
   end 
 
   def translate
