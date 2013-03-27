@@ -36,11 +36,14 @@ Tenses can be specified using English or Norsk. Available tenses are:
 
 * `present` / `presens`
 
-You can see a list of availabe languages at
-`http://localhost:4567/languages` and a list of supported verbs for any
-given language at `http://localhost:4567/norsk/verbs` (or equivalent). You
-can append `.json` to either of the aforementioned URLs to get a JSON
-response rather than plaintext. 
+See a list of availabe languages at
+`http://localhost:4567/languages`.
+
+See a list of supported verbs for any
+given language at `http://localhost:4567/norsk/verbs` (or equivalent). 
+
+You can append `.json` to any of the aforementioned URLs to get a JSON
+response rather than plain text. 
 
 Roadmap
 -------
@@ -58,11 +61,6 @@ In due course, the API will be extended to include additional tenses:
 * `present-passive` / `presens-passiv`
 * `conditional` / `betinget` 
 * `stem` / `demme`
-
-I also intend to add support for JSON responses for any given request
-simply by appending `.json` to the URL. This already works for some
-requests, but I'll roll it out across the board. Hopefully this will make
-it easier for others to use this API as part of a larger service.
 
 Improvements? Ideas?
 --------------------
