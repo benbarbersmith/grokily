@@ -54,18 +54,15 @@ class Language
   end
 
   def conjugate(verb, tense)
-    conjugations = []
     if has_verb? verb and has_tense? tense 
       conjugations = @verbs[verb].map do |v| 
         v.conjugate(@tenses[tense])
       end
-    end
-    results = []
-    conjugations.each { |c| results << c.to_s }
-    if results.size > 1 and any_the_same results
-      conjugations = conjugations.map {|c| c.qualify }
-    else
-      conjugations.map { |c| if c.verb.qualified? then c.qualify else c end }
+      if any_the_same(conjugations.map { |c| c.to_s })
+        conjugations.map { |c| c.translate }
+      else
+        conjugations
+      end
     end
   end
 
@@ -86,11 +83,9 @@ class Language
 
   def select_regular_verbs regular=true
     selection = @verbs.select do |verb| 
-       @verbs[verb] if @verbs[verb].any? {|v| v.irregular? } ^ regular
+       @verbs[verb] if @verbs[verb].any? { |v| v.irregular? } ^ regular
     end
-    selection.values.flatten.map do |v| 
-      v.to_hash
-    end
+    selection.values.flatten.map { |v| v.to_hash }
   end
 
   def any_the_same array

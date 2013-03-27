@@ -3,31 +3,39 @@
 class Conjugation
   attr_accessor :verb
 
-  def initialize(verb, conjugation)
+  def initialize(verb, conjugation, translate = false)
     @verb = verb
     @conjugation = [conjugation].flatten
+    @use_translation = translate
   end
 
   def to_s
-    @conjugation.join(" / ")
+    qualified_conjugation.join(" / ")
   end
 
   def to_hash
-    { :verb => verb.to_hash, :conjugation => @conjugation }
+    { :verb => verb.to_hash, :conjugation => qualified_conjugation }
   end 
 
-  def qualify
-    if verb.qualified?
-      map_conjugations verb.qualifier
-    else
-      map_conjugations verb.english
-    end
+  def translate
+    Conjugation.new(@verb, @conjugation, true)
   end
 
   private
 
-  def map_conjugations qualifier
-    Conjugation.new(verb, @conjugation.map { |c| "#{c} (#{qualifier})" })
+  def qualifiers
+    qualifiers = []
+    qualifiers << verb.qualifier if verb.qualified?
+    qualifiers << verb.english if @use_translation
+    qualifiers 
+  end
+
+  def qualified_conjugation 
+    if qualifiers.empty? 
+      @conjugation
+    else
+      @conjugation.map { |c| "#{c} (#{qualifiers.join(", ")})" }
+    end
   end
 
 end
