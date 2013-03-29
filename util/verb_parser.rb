@@ -12,10 +12,9 @@ def process_single_verb c
            :english => c.fields[c.fields.size-2]}
   verb[:qualifier] = c.fields.last unless c.fields.last.nil?
   if c.any? {|k, v| v.include? "*" unless v.nil? } 
-    verb[:irregularities] = []
+    verb[:irregularities] = {} 
     c.select {|k, v| v.include? "*" unless v.nil? }.each do |item| 
-      irregularity = { item.first.downcase.to_sym => item.last[2..-1] }
-      verb[:irregularities] << irregularity
+      verb[:irregularities][item.first.downcase.to_sym] = item.last[2..-1] 
     end
   end
   verb
@@ -25,14 +24,12 @@ def process_multi_verb c
   verb = { :infinitive => c.fields.first, 
            :english => c.fields[c.fields.size - 2] }
   verb[:qualifier] = c.fields.last unless c.fields.last.nil?
-  verb[:irregularities] = []
+  verb[:irregularities] = {}
   c.select {|k, v| v.include? "/" unless v.nil? }.each do |item| 
-    irregularity = { item.first.downcase.to_sym => \
+    verb[:irregularities][item.first.downcase.to_sym] =
       item.last.split("/").map do |conj| 
         conj.strip.sub("* ", "")
       end
-    }
-    verb[:irregularities] << irregularity
   end
   verb
 end

@@ -4,12 +4,14 @@ class Verb
   attr_accessor :infinitive, :english
 
   def initialize verb
-    @infinitive = verb[:infinitive]
-    @english = verb[:english] 
+    @infinitive = verb[:infinitive] or raise InvalidVerbException
+    @english = verb[:english] or raise InvalidVerbException
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
-      verb[:irregularities].each do |irregularity| 
-        irregularity.each_pair {|k, v| @irregularities[k] = v } 
+      begin
+        verb[:irregularities].each_pair {|k, v| @irregularities[k] = v } 
+      rescue 
+        raise InvalidVerbException
       end
     end
     if verb.has_key? :qualifier then @qualifier = verb[:qualifier] end
@@ -51,4 +53,7 @@ class Verb
     instance_variables.include? :@irregularities and 
     @irregularities[tense.to_sym]
   end
+end
+
+class InvalidVerbException < Exception
 end
