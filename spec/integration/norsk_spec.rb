@@ -28,7 +28,7 @@ describe "To show users what they can do, Grokily" do
       resp.has_key?("tenses").should == true
       list = resp["tenses"].map(&:values).flatten.uniq
       tenses.values.flatten.uniq.each do |t|
-        list.include?(t).should == true
+        list.should include t
       end
     end
 
@@ -54,9 +54,9 @@ describe "To show users what they can do, Grokily" do
       list = resp["verbs"]
       infinitives = list.map { |v| v["infinitive"] }
       translations = list.map { |v| v["english"] }
-      list.each do |v|
-        infinitives.include?(v["infinitive"]).should == true
-        translations.include?(v["english"]).should == true
+      verbs.keys.each do |infinitive|
+        infinitives.should include infinitive
+        translations.should include verbs[infinitive]["english"]
       end
     end
 
@@ -103,7 +103,7 @@ tenses.each_pair do |tense, tense_keys|
             last_response.should be_ok
             last_response.header['Content-Type'].should include 'application/json'
             resp = JSON.parse(last_response.body)
-            resp.has_key?("conjugations").should == true
+            resp.keys.should include ("conjugations")
             list = resp["conjugations"]
             conjugation.split(", ").each do |expected|
               list.map { |c| c["conjugation"] }.flatten.any? do |v| 

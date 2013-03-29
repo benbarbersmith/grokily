@@ -28,7 +28,9 @@ def read_verb_data file
     end
     unless verbs[c.field(0)]["qualifier"].nil?
       verbs[c.field(0)].each_pair do |k, v|
-        verbs[c.field(0)][k] = "#{v} (#{verbs[c.field(0)]["qualifier"]})"
+        unless k == "english"
+          verbs[c.field(0)][k] = "#{v} (#{verbs[c.field(0)]["qualifier"]})"
+        end
       end
     end
   end
