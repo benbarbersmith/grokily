@@ -44,21 +44,11 @@ class Verb
   end
 
   def qualifier
-    if qualified? then @qualifier end
+    @qualifier if qualified?
   end
 
-  def irregular?(tense = false)
-    # Are there any irregularities at all? If not, there's nothing to do.
-    if instance_variables.include? :@irregularities
-      if tense
-        # A verb might be irregular, but it should not be considered to be
-        # irregular in this tense unless there are no listed irregularities.
-        not @irregularities[tense.to_sym].nil?
-      else
-        # But if we're not talking about a specific tense, it's good enough
-        # to simply know whether or not there are any irregularities at all.
-        true
-      end
-    end
+  def irregular? tense
+    instance_variables.include? :@irregularities and 
+    @irregularities[tense.to_sym]
   end
 end
