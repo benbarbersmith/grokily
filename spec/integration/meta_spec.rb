@@ -27,6 +27,21 @@ describe "Grokily" do
 
   end
 
+  context "returns a 404 for unsupported format requests" do
+    
+    it "in XML" do
+      get '/languages.xml'
+      last_response.status.should be 404
+      get '/norsk/verbs.xml'
+      last_response.status.should be 404
+      get '/norsk/tenses.xml'
+      last_response.status.should be 404
+      get '/norsk/fly/present.xml'
+      last_response.status.should be 404
+    end
+
+  end
+
   context "returns a 404 for unsupported language requests like a" do
 
     it "verb list" do
