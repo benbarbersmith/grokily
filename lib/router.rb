@@ -39,8 +39,8 @@ class Router
   end
 
   # Process a user inputs by conjugating the verb and applying a subject.
-  def conjugate(language, verb, tense)
-    get_language(language).conjugate(verb, tense)
+  def conjugate(language, verb, tense, subject=nil)
+    get_language(language).conjugate(verb, tense, subject)
   end
 
 end

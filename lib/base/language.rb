@@ -60,13 +60,18 @@ class Language
     @tenses.values.uniq
   end
 
-  def conjugate(verb, tense)
-    if has_verb? verb and has_tense? tense 
+  def subjects
+    @subjects
+  end
+
+  def conjugate(verb, tense, subject)
+    subject ||= @subjects[0]
+    if has_verb? verb and has_tense? tense and has_subject? subject
       conjugations = @verbs[verb].map do |v| 
-        v.conjugate(@tenses[tense])
+        v.conjugate(@tenses[tense], subject)
       end
-      if any_the_same(conjugations.map { |c| c.to_s })
-        conjugations.map { |c| c.translate }
+      if any_the_same(conjugations.map(&:to_s))
+        conjugations.map(&:translate)
       else
         conjugations
       end
@@ -76,11 +81,18 @@ class Language
   private
 
   def has_tense? tense
-    @tenses.key? tense or raise TenseException, "Unknown tense #{tense}"
+    @tenses.key? tense or 
+    raise TenseException, "Unknown tense #{tense}"
   end
 
   def has_verb? verb
-    @verbs.key? verb or raise VerbException, "Unknown verb #{verb}"
+    @verbs.key? verb or 
+    raise VerbException, "Unknown verb #{verb}"
+  end
+
+  def has_subject? subject 
+    @subjects.include? subject.downcase or 
+    raise SubjectException, "Unknown subject #{subject}"
   end
 
   def any_the_same array

@@ -51,6 +51,16 @@ class Grokily < Sinatra::Base
     end
   end
 
+  # Allow users to specify a language, verb, tense and subject.
+  get '/:language/:verb/:tense/:subject.?:format?' do |language, verb, tense, subject, format|
+    begin
+      process(format, "conjugations", 
+              router.conjugate(language, verb, tense, subject) )
+    rescue LanguageException, VerbException, TenseException
+      halt 404
+    end
+  end
+ 
   # Allow users to specify a language, verb and tense.
   get '/:language/:verb/:tense.?:format?' do |language, verb, tense, format|
     begin
@@ -60,7 +70,7 @@ class Grokily < Sinatra::Base
       halt 404
     end
   end
- 
+
   not_found do
     "Page not found." 
   end
