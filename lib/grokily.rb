@@ -51,6 +51,15 @@ class Grokily < Sinatra::Base
     end
   end
 
+  # See which subjects are available in the specified language.
+  get '/:language/subjects.?:format?' do |language, format|
+    begin
+      process(format, "subjects", router.list_subjects(language)) 
+    rescue LanguageException
+      halt 404
+    end
+  end
+
   # Allow users to specify a language, verb, tense and subject.
   get '/:language/:verb/:tense/:subject.?:format?' do |language, verb, tense, subject, format|
     begin

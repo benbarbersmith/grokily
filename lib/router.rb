@@ -38,6 +38,11 @@ class Router
     get_language(language).tenses
   end
 
+  # Return a list of tenses available for a given language.
+  def list_subjects(language)
+    get_language(language).subjects
+  end
+
   # Process a user inputs by conjugating the verb and applying a subject.
   def conjugate(language, verb, tense, subject=nil)
     get_language(language).conjugate(verb, tense, subject)
