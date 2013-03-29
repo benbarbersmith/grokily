@@ -9,7 +9,7 @@ class Verb
     @irregularities = {} unless verb[:irregularities].nil?
     unless verb[:irregularities].nil? 
       begin
-        verb[:irregularities].each_pair {|k, v| @irregularities[k] = v } 
+        verb[:irregularities].each_pair {|k, v| @irregularities[k.downcase.to_sym] = v } 
       rescue 
         raise InvalidVerbException
       end
@@ -24,7 +24,15 @@ class Verb
   def to_hash
     hash = {}
     instance_variables.each do |var| 
-      hash[var.to_s.delete("@")] = instance_variable_get(var)
+      unless var == :@irregularities
+        hash[var.to_s.delete("@")] = instance_variable_get(var) 
+      end
+    end
+    if instance_variables.include? :@irregularities
+      hash["irregularities"] = {}
+      @irregularities.each_pair do |k, v|
+        hash["irregularities"][k.to_s.downcase ] = v
+      end
     end
     hash
   end 
@@ -50,8 +58,8 @@ class Verb
   end
 
   def irregular? tense
-    instance_variables.include? :@irregularities and 
-    @irregularities[tense.to_sym]
+    instance_variables.include?(:@irregularities) and
+    not @irregularities[tense.to_sym].nil?
   end
 end
 

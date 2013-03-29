@@ -5,7 +5,7 @@ class Tense
   private
 
   def self.to_sym
-    @keys[0].to_sym
+    @keys[0].downcase.to_sym
   end
   
   public
