@@ -10,7 +10,7 @@ class Conjugation
   end
 
   def to_s
-    qualified_conjugation.join(" / ")
+    qualified_conjugation.join(", ")
   end
 
   def to_hash
