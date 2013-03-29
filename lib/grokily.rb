@@ -30,11 +30,7 @@ class Grokily < Sinatra::Base
 
   # See which languages are available.
   get '/languages.?:format?' do |format|
-    begin
-      process(format, "languages", router.list_languages)
-    rescue NoLanguagesFoundException
-      halt 404
-    end
+    process(format, "languages", router.list_languages)
   end
 
   # See which verbs are available in the specified language.

@@ -25,11 +25,7 @@ class Router
 
   # Return a list of languages available.
   def list_languages
-    if @languages.empty?
-      raise NoLanguagesFoundException
-    else
-      @languages.keys 
-    end
+    @languages.keys
   end
 
   # Return a list of verbs available for a given language.
@@ -47,7 +43,4 @@ class Router
     get_language(language).conjugate(verb, tense)
   end
 
-end
-
-class NoLanguagesFoundException < Exception
 end
