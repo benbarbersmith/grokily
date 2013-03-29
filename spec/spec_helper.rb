@@ -1,5 +1,7 @@
 # encoding: UTF-8
 
+require 'simplecov'
+SimpleCov.start
 require 'rspec'
 require 'rack/test'
 require 'csv'
