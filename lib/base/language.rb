@@ -83,11 +83,6 @@ class Language
     @verbs.key? verb or raise VerbException, "Unknown verb #{verb}"
   end
 
-  def has_subject? subject
-    @subjects.any? { |s| s.upcase == subject.upcase } or \
-      raise SubjectException, "Unknown subject #{subject}"
-  end
-
   def any_the_same array
     array.any? { |r| array.count(r) > 1 }
   end
