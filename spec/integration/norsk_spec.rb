@@ -2,6 +2,10 @@
 
 require_relative '../spec_helper'
 
+subjects = [
+  "", "jeg", "du", "han", "hun", "den", "det", "vi", "dere", "de"
+].map { |s| [s, s.capitalize] }.flatten.uniq
+
 tenses = {
   "present" => ["present", "presens"],
 }
@@ -82,39 +86,42 @@ describe "When asked for unrecognised content such as" do
 
 end
 
-tenses.each_pair do |tense, tense_keys|
-  describe "In the #{tense} tense, Grokily" do
+subjects.each do |subject|
 
-    verbs.each_pair do |infinitive, verb|
-      conjugation = verb[tense]
+  tenses.each_pair do |tense, tense_keys|
+    describe "In the #{tense} tense for subject #{subject}, Grokily" do
 
-      context "conjugates #{infinitive} to #{conjugation}" do
+      verbs.each_pair do |infinitive, verb|
+        conjugation = verb[tense]
 
-        tense_keys.each do |tense_key|
-          it "using #{tense_key} in plain text" do
-            get URI.encode "/norsk/#{infinitive}/#{tense_key}"
-            last_response.should be_ok
-            last_response.header['Content-Type'].should include 'text/plain'
-            last_response.body.should include conjugation
-          end
+        context "conjugates #{infinitive} to #{conjugation}" do
 
-          it "using #{tense_key} in JSON" do
-            get URI.encode "/norsk/#{infinitive}/#{tense_key}.json"
-            last_response.should be_ok
-            last_response.header['Content-Type'].should include 'application/json'
-            resp = JSON.parse(last_response.body)
-            resp.keys.should include ("conjugations")
-            list = resp["conjugations"]
-            conjugation.split(", ").each do |expected|
-              list.map { |c| c["conjugation"] }.flatten.any? do |v| 
-                v.include? expected
-              end.should == true 
+          tense_keys.each do |tense_key|
+            it "using #{tense_key} in plain text" do
+              get URI.encode "/norsk/#{infinitive}/#{tense_key}#{'/' + subject if subject.size > 0}"
+              last_response.should be_ok
+              last_response.header['Content-Type'].should include 'text/plain'
+              last_response.body.should include 
+                "#{subject + " " if subject.size > 0}#{conjugation}"
+            end
+
+            it "using #{tense_key} in JSON" do
+              get URI.encode "/norsk/#{infinitive}/#{tense_key}#{'/' + subject if subject.size > 0}.json"
+              last_response.should be_ok
+              last_response.header['Content-Type'].should include 'application/json'
+              resp = JSON.parse(last_response.body)
+              resp.keys.should include ("conjugations")
+              list = resp["conjugations"]
+              conjugation.split(", ").each do |expected|
+                list.should include 
+                  "#{subject + " " if subject.size > 0}#{expected}"
+              end
             end
           end
+
         end
-
       end
-    end
 
+    end
   end
 end
