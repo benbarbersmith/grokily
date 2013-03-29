@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 require_relative '../spec_helper'
 
 tenses = {
@@ -59,6 +60,24 @@ describe "To show users what they can do, Grokily" do
       end
     end
 
+  end
+
+end
+
+describe "When asked for unrecognised content such as" do
+
+  context "a fake tense" do
+    it "halts with a 404" do
+      get URI.encode "/norsk/#{verbs.keys[rand(verbs.size)]}/fake"
+      last_response.status.should be 404
+    end
+  end
+
+  context "a fake verb" do
+    it "halts with a 404" do
+      get URI.encode "/norsk/fake/#{tenses.keys[rand(tenses.size)]}"
+      last_response.status.should be 404
+    end
   end
 
 end
