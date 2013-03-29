@@ -4,7 +4,7 @@ require_relative '../spec_helper'
 
 subjects = [
   "", "jeg", "du", "han", "hun", "den", "det", "vi", "dere", "de"
-].map { |s| [s, s.capitalize] }.flatten.uniq
+]
 
 tenses = {
   "present" => ["present", "presens"],
@@ -66,6 +66,30 @@ describe "To show users what they can do, Grokily" do
 
   end
 
+  context "exposes a list of Norwegian subjects on request" do
+
+    it "in plaintext" do
+      get '/norsk/subjects'
+      last_response.should be_ok
+      last_response.header['Content-Type'].should include 'text/plain'
+      subjects.each do |subject|
+        last_response.body.should include subject
+      end
+    end
+
+    it "in json" do
+      get '/norsk/subjects.json'
+      last_response.should be_ok
+      last_response.header['Content-Type'].should include 'application/json'
+      resp = JSON.parse(last_response.body)
+      resp.has_key?("subjects").should == true
+      list = resp["subjects"]
+      subjects.select { |s| s.size > 0 }.each do |subject|
+        list.should include subject
+      end
+    end
+
+  end
 end
 
 describe "When asked for unrecognised content such as" do
