@@ -1,41 +1,53 @@
 # encoding: utf-8
 
+require_relative 'base/language'
+
 class Router
   attr_reader :languages
 
   def initialize
     @languages = {}
-    Dir[File.dirname(__FILE__) + "/languages/*/language.rb"].each {|file| 
+    Dir[File.dirname(__FILE__) + "/languages/*/language.rb"].each do |file| 
       require file
-      lang = /languages\/(.*)\/language\.rb/.match(file)[1]
-      @languages[lang] = Object.const_get(lang.capitalize).new
-    }
+      lang = /#{File.dirname(__FILE__)}\/languages\/(.*)\/language.rb/.match(file)[1]
+      Object.const_get(lang.capitalize).new.register(self)
+    end
   end
 
-  public 
+  def register_language(key, language)
+    @languages[key] = language
+  end
+
+  def get_language language
+    @languages[language] or
+      raise LanguageException, "Language #{language} not found." 
+  end
 
   # Return a list of languages available.
-  def languages
-    @languages.keys
+  def list_languages
+    if @languages.empty?
+      raise NoLanguagesFoundException
+    else
+      @languages.keys 
+    end
   end
 
   # Return a list of verbs available for a given language.
   def list_verbs(language)
-    @languages[language].verbs or \
-      raise LanguageException, "Language #{language} not found." 
+    get_language(language).verbs
   end
 
   # Return a list of tenses available for a given language.
   def list_tenses(language)
-    @languages[language].tenses or \
-      raise LanguageException, "Language #{language} not found." 
+    get_language(language).tenses
   end
 
   # Process a user inputs by conjugating the verb and applying a subject.
-  def conjugate_verb(language, verb, tense)
-    @languages[language].conjugate(verb, tense) or \
-      raise LanguageException, "Language #{language} not found." 
+  def conjugate(language, verb, tense)
+    get_language(language).conjugate(verb, tense)
   end
 
 end
 
+class NoLanguagesFoundException < Exception
+end

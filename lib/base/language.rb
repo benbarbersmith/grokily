@@ -44,6 +44,10 @@ class Language
 
   public
 
+  def register(router)
+    router.register_language(self.class.to_s.downcase, self)
+  end
+
   def register_tense(key, tense)
     @tenses[key] = tense
   end
