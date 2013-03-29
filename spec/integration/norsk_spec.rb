@@ -87,10 +87,12 @@ describe "When asked for unrecognised content such as" do
 end
 
 subjects.each do |subject|
-
   tenses.each_pair do |tense, tense_keys|
-    describe "In the #{tense} tense for subject #{subject}, Grokily" do
+    scenario = "In the #{tense} tense" + 
+      if subject.size > 0 then "for subject #{subject}" else "" end + 
+      ", Grokily"
 
+    describe scenario do
       verbs.each_pair do |infinitive, verb|
         conjugation = verb[tense]
 
@@ -121,7 +123,6 @@ subjects.each do |subject|
 
         end
       end
-
     end
   end
 end
