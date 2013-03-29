@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 
 describe "In the present tense, Grokily" do
 
