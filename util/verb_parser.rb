@@ -25,7 +25,7 @@ def process_multi_verb c
            :english => c.fields[c.fields.size - 2] }
   verb[:qualifier] = c.fields.last unless c.fields.last.nil?
   verb[:irregularities] = {}
-  c.select {|k, v| v.include? "/" unless v.nil? }.each do |item| 
+  c.select {|k, v| v.include? "*" unless v.nil? }.each do |item| 
     verb[:irregularities][item.first.downcase.to_sym] =
       item.last.split("/").map do |conj| 
         conj.strip.sub("* ", "")
