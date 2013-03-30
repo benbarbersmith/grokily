@@ -38,3 +38,35 @@ def read_verb_data file
   end
   verbs
 end
+
+def qualify(infinitive, verb)
+  unless verb["qualifier"].nil?
+    qualified_infinitive = (infinitive + " (" + verb["qualifier"] + ")")
+  else
+    infinitive
+  end
+end
+
+def subjectify(conjugation, subject)
+  expected = conjugation.split(", ").map do |c|
+    if subject.size > 0 
+      subject + " " + c
+    else
+      c
+    end
+  end.join(", ")
+end
+
+def scenario(tense, subject)
+  "In the #{tense} tense" + 
+    if subject.size > 0 then " for subject #{subject}" else "" end +
+    ", Grokily"
+end
+
+def conjugation_url(language, infinitive, tense_key, subject, format="")
+  subject = if subject.size > 0 then "/" + subject else "" end
+  URI.encode("/" + language + "/" + infinitive + "/" + 
+             tense_key + subject + format)
+end
+
+
