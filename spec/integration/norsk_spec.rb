@@ -117,15 +117,27 @@ describe "When asked for unrecognised content such as" do
   end
 end
 
-subjects.each do |subject|
-  tenses.each_pair do |tense, tense_keys|
+tenses.each_pair do |tense, tense_keys|
+  subjects.each do |subject|
     scenario = "In the #{tense} tense" + 
       if subject.size > 0 then " for subject #{subject}" else "" end + 
       ", Grokily"
 
     describe scenario do
       verbs.each_pair do |infinitive, verb|
+
+        qualified_infinitive = infinitive
+        qualified_infinitive = (qualified_infinitive + 
+          " (" + verb["qualifier"] + ")") unless verb["qualifier"].nil?
         conjugation = verb[tense]
+
+        expected = conjugation.split(", ").map do |c|
+          if subject.size > 0 
+            subject + " " + c
+          else
+            c
+          end
+        end.join(", ")
 
         context "conjugates #{infinitive} to #{conjugation}" do
 
@@ -134,8 +146,7 @@ subjects.each do |subject|
               get URI.encode "/norsk/#{infinitive}/#{tense_key}#{'/' + subject if subject.size > 0}"
               last_response.should be_ok
               last_response.header['Content-Type'].should include 'text/plain'
-              last_response.body.should include 
-                "#{subject + " " if subject.size > 0}#{conjugation}"
+              last_response.body.should include expected 
             end
 
             it "using #{tense_key} in JSON" do
@@ -144,14 +155,20 @@ subjects.each do |subject|
               last_response.header['Content-Type'].should include 'application/json'
               resp = JSON.parse(last_response.body)
               resp.keys.should include ("conjugations")
-              list = resp["conjugations"].first
-              conjugation.split(", ").each do |expected|
-                list["conjugation"].should include 
-                  "#{subject + " " if subject.size > 0}#{expected}"
+              list = resp["conjugations"]
+              list.each do |c| 
+                c["verb"].should include infinitive or qualified_infinitive 
+                c["subject"].should eq subject if subject.size > 0
+                c["tense"].should eq tense
               end
-              list["verb"].should eq infinitive
-              list["subject"].should eq subject if subject.size > 0
-              list["tense"].should eq tense
+              cs = list.map do |c|
+                c["conjugation"]
+              end.flatten
+              expected.split(", ").each do |e|
+                cs.any? do |c|
+                  c.include? e
+                end.should be true
+              end
             end
           end
 
