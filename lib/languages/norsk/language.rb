@@ -24,7 +24,13 @@ class NorskTense < Tense
     if subject.nil?
       conjugation
     else
-      "#{subject} #{conjugation}"
+      if conjugation.is_a? Array
+        conjugation.map do |c|
+          "#{subject} #{c}"
+        end
+      else
+        "#{subject} #{conjugation}"
+      end
     end
   end
 end
