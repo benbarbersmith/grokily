@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-class NorskStemTense < NorskTense
+class NorskStemTense < NorskForm
   @keys = "stem", "demme"
 
   def self.specific_conjugation(verb)

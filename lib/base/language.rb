@@ -68,6 +68,9 @@ class Language
     if has_tense? tense and @tenses[tense].requires_subject?
       subject ||= @subjects[0]
     end
+    if subject and not @tenses[tense].takes_subject?
+      raise SubjectException, "Tense #{tense} does not expect a subject."
+    end
     if has_verb? verb and has_subject? subject
       conjugations = @verbs[verb].map do |v| 
         v.conjugate(@tenses[tense], subject)

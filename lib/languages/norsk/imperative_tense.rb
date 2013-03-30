@@ -2,7 +2,7 @@
 
 require 'unicode'
 
-class NorskImperativeTense < NorskTense
+class NorskImperativeTense < NorskForm
   @keys = "imperative", "viktig"
 
   def self.specific_conjugation(verb)
