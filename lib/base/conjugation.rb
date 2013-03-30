@@ -40,7 +40,7 @@ class Conjugation
     if qualifiers.empty? 
       @conjugation
     else
-      @conjugation.map(&:join(", "))
+      @conjugation.map { |c| "#{c} (#{qualifiers.join(", ")})" }
     end
   end
 
