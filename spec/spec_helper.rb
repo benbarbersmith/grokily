@@ -23,7 +23,7 @@ def read_verb_data file
     headers = c.headers
     (1..c.fields.size-1).each do |n|
       unless c.field(n).nil?
-        verbs[c.field(0)][headers[n]] = c.field(n).sub("* ","").sub(" / ",", ")
+        verbs[c.field(0)][headers[n]] = c.field(n).gsub("* ","").gsub(" / ",", ")
       end
     end
     unless verbs[c.field(0)]["qualifier"].nil?
