@@ -119,7 +119,7 @@ end
 subjects.each do |subject|
   tenses.each_pair do |tense, tense_keys|
     scenario = "In the #{tense} tense" + 
-      if subject.size > 0 then "for subject #{subject}" else "" end + 
+      if subject.size > 0 then " for subject #{subject}" else "" end + 
       ", Grokily"
 
     describe scenario do
