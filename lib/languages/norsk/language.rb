@@ -7,9 +7,33 @@ class Norsk < Language
   end
 end
 
+class NorskForm < Tense
+  def self.requires_subject?
+    false
+  end
+
+  def self.takes_subject?
+    false
+  end
+
+  def self.regular_conjugation(verb, subject=nil)
+    raise SubjectException, "No subject allowed." unless subject.nil?
+    self.specific_conjugation(verb)
+  end
+
+  def self.irregular_conjugation(conjugation, subject=nil)
+    raise SubjectException, "No subject allowed." unless subject.nil?
+    conjugation
+  end
+end
+
 class NorskTense < Tense
   def self.requires_subject?
     false
+  end
+
+  def self.takes_subject?
+    true 
   end
 
   def self.regular_conjugation(verb, subject=nil)

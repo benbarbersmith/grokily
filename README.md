@@ -71,12 +71,13 @@ Roadmap
 At present, available tenses are:
 
 * `present` / `presens`
+* `stem` / `demme`
+* `imperative` / `viktig`
 
 In due course, the API will be extended to include additional tenses:
 
 * `past` / `fortid`
 * `future` / `futurum`
-* `imperative` / `viktig`
 * `present-participle` / `presens-partisipp`
 * `past-participle` / `fortid-partisipp`
 * `present-perfect` / `presens-perfekt`
@@ -84,7 +85,6 @@ In due course, the API will be extended to include additional tenses:
 * `passive` / `passiv`
 * `present-passive` / `presens-passiv`
 * `conditional` / `betinget` 
-* `stem` / `demme`
 
 Improvements? Ideas?
 --------------------
