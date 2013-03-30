@@ -6,9 +6,9 @@ A RESTful API to help you conjugate Norwegian Bokmål verbs.
 Installation
 ------------
 
-Install Sinatra from rubygems:
+Install dependencies using bundler:
 
-    $ gem install sinatra
+    $ bundle install 
 
 That's the only dependency you need; after that, just grab a copy of the souce
 and run the application.
@@ -28,29 +28,39 @@ You can see a list of availabe languages at:
     http://localhost:4567/languages
     http://localhost:4567/languages.json
 
-You can see a list of supported verbs for any given language at:
+You can see a list of supported verbs for any given language (using Norsk
+as an example) at:
 
     http://localhost:4567/norsk/verbs
     http://localhost:4567/norsk/verbs.json
 
-You can see a list of available tenses for any given language at: 
+You can see a list of available tenses for any given language (using Norsk
+as an example) at: 
 
     http://localhost:4567/norsk/tenses
     http://localhost:4567/norsk/tenses.json
 
-Tenses can be specified using English or Norsk. 
+Tenses can be specified using English tense names or those of the target
+language.
+
+You can see a list of available subject for any given language (using Norsk
+as an example) at:
+
+    http://localhost:4567/norsk/subjects
+    http://localhost:4567/norsk/subjects.json
 
 Once you've picked a language, verb and tense, you can ask Grokily to
 conjugate it. To do so, start with `http://localhost:4567/norsk/` followed
-by the verb infinitive and the tense. For example, you could try:
+by the infinitive, the tense and (optionally) a subject. For example, you
+could try:
 
     http://localhost:4567/norsk/be/presens
 
-    http://localhost:4567/norsk/begynne/futurum
+    http://localhost:4567/norsk/begynne/futurum/jeg
 
     http://localhost:4567/norsk/arbeide/imperative
 
-    http://localhost:4567/norsk/glede/present
+    http://localhost:4567/norsk/glede/present/det
 
 As before, you can append `.json` to any of the aforementioned URLs to get
 a JSON response rather than plain text. 
