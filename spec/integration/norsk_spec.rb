@@ -108,6 +108,12 @@ describe "When asked for unrecognised content such as" do
     end
   end
 
+  context "a fake subject" do
+    it "halts with a 404" do
+      get URI.encode "/norsk/#{verbs.keys[rand(verbs.size)]}/#{tenses.keys[rand(tenses.size)]}/fake"
+      last_response.status.should be 404
+    end
+  end
 end
 
 subjects.each do |subject|
@@ -137,11 +143,14 @@ subjects.each do |subject|
               last_response.header['Content-Type'].should include 'application/json'
               resp = JSON.parse(last_response.body)
               resp.keys.should include ("conjugations")
-              list = resp["conjugations"]
+              list = resp["conjugations"].first
               conjugation.split(", ").each do |expected|
-                list.should include 
+                list["conjugation"].should include 
                   "#{subject + " " if subject.size > 0}#{expected}"
               end
+              list["verb"].should eq infinitive
+              list["subject"].should eq subject if subject.size > 0
+              list["tense"].should eq tense
             end
           end
 

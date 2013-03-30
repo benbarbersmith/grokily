@@ -58,6 +58,13 @@ describe "Grokily" do
       last_response.status.should be 404
     end
 
+    it "tense list" do
+      get '/fake/subjects.json'
+      last_response.status.should be 404
+      get '/fake/subjects'
+      last_response.status.should be 404
+    end
+
     it "conjugation" do
       get '/fake/fly/present.json'
       last_response.status.should be 404
