@@ -1,3 +1,10 @@
+source :rubygems
+
+ruby '1.9.3'
+
 gem 'sinatra'
-gem 'rspec', :require => false, :group => :test
-gem 'simplecov', :require => false, :group => :test
+
+group :test do
+  gem 'rspec'
+  gem 'simplecov'
+end
