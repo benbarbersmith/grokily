@@ -8,6 +8,7 @@ subjects = [
 
 tenses = {
   "present" => ["present", "presens"],
+  "past" => ["past", "fortid"],
 }
 
 verbs = read_verb_data("data/norsk_verbs.csv")
