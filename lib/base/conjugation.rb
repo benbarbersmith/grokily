@@ -17,9 +17,11 @@ class Conjugation
 
   def to_hash
     hash = { :verb => verb.to_s, 
+             :english => verb.english.to_s,
              :conjugation => qualified_conjugation,
              :tense => @tense.to_sym }
     hash[:subject] = @subject if instance_variables.include? :@subject
+    hash[:qualifier] = verb.qualifier if verb.qualified?
     hash
   end 
 
