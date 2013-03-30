@@ -8,11 +8,23 @@ class Norsk < Language
 end
 
 class NorskTense < Tense
-  def self.regular_conjugation(verb, subject)
+  def self.requires_subject?
+    false
+  end
+
+  def self.regular_conjugation(verb, subject=nil)
     subjectify(subject, self.specific_conjugation(verb))
   end
 
+  def self.irregular_conjugation(conjugation, subject=nil)
+    subjectify(subject, conjugation)
+  end
+
   def self.subjectify(subject, conjugation)
-    "#{subject} #{conjugation}"
+    if subject.nil?
+      conjugation
+    else
+      "#{subject} #{conjugation}"
+    end
   end
 end

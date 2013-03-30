@@ -3,9 +3,11 @@
 class Conjugation
   attr_accessor :verb
 
-  def initialize(verb, conjugation, translate = false)
+  def initialize(verb, conjugation, tense, subject, translate = false)
     @verb = verb
     @conjugation = [conjugation].flatten
+    @tense = tense
+    @subject = subject unless subject.nil?
     @use_translation = translate
   end
 
@@ -14,11 +16,15 @@ class Conjugation
   end
 
   def to_hash
-    { :verb => verb.to_s, :conjugation => qualified_conjugation }
+    hash = { :verb => verb.to_s, 
+             :conjugation => qualified_conjugation,
+             :tense => @tense.to_sym }
+    hash[:subject] = @subject if instance_variables.include? :@subject
+    hash
   end 
 
   def translate
-    Conjugation.new(@verb, @conjugation, true)
+    Conjugation.new(@verb, @conjugation, @tense, @subject, true)
   end
 
   private
@@ -34,7 +40,7 @@ class Conjugation
     if qualifiers.empty? 
       @conjugation
     else
-      @conjugation.map { |c| "#{c} (#{qualifiers.join(", ")})" }
+      @conjugation.map(&:join(", "))
     end
   end
 

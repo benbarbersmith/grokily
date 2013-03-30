@@ -42,10 +42,14 @@ class Verb
   def conjugate(tense, subject)
     if irregular? tense
       # Return the listed irregularity for this tense.
-      Conjugation.new(self, "#{subject} #{@irregularities[tense.to_sym]}")
+      irrs = @irregularities[tense.to_sym]
+      Conjugation.new(self, 
+                      tense.irregular_conjugation(irrs, subject),
+                      tense, subject)
     else
       # Conjugate the verb according to normal tense rules.
-      Conjugation.new(self, tense.regular_conjugation(self, subject))
+      Conjugation.new(self, tense.regular_conjugation(self, subject), 
+                      tense, subject)
     end
   end
 

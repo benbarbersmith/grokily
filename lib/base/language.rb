@@ -65,8 +65,10 @@ class Language
   end
 
   def conjugate(verb, tense, subject)
-    subject ||= @subjects[0]
-    if has_verb? verb and has_tense? tense and has_subject? subject
+    if has_tense? tense and @tenses[tense].requires_subject?
+      subject ||= @subjects[0]
+    end
+    if has_verb? verb and has_subject? subject
       conjugations = @verbs[verb].map do |v| 
         v.conjugate(@tenses[tense], subject)
       end
@@ -91,7 +93,7 @@ class Language
   end
 
   def has_subject? subject 
-    @subjects.include? subject.downcase or 
+    subject.nil? or @subjects.include? subject or 
     raise SubjectException, "Unknown subject #{subject}"
   end
 
