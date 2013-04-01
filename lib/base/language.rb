@@ -65,43 +65,41 @@ class Language
   end
 
   def conjugate(verb, tense, subject)
-    if has_tense? tense and @tenses[tense].requires_subject?
-      subject ||= @subjects[0]
+    raise TenseException, "Unknown tense #{tense}" unless has_tense? tense 
+    raise VerbException, "Unknown verb #{verb}" unless has_verb? verb
+    unless has_subject? subject or subject.nil?
+      raise SubjectException, "Unknown subject #{subject}"
     end
-    if subject and not @tenses[tense].takes_subject?
-      raise SubjectException, "Tense #{tense} does not expect a subject."
-    end
-    if has_verb? verb and has_subject? subject
-      conjugations = @verbs[verb].map do |v| 
-        v.conjugate(@tenses[tense], subject)
-      end
-      if any_the_same(conjugations.map(&:to_s))
-        conjugations.map(&:translate)
-      else
-        conjugations
-      end
+
+    conjugations = @verbs[verb].map do |v| 
+      v.conjugate(@tenses[tense], subject)
+    end 
+    if needs_translation(conjugations)
+      conjugations.map(&:translate)
+    else
+      conjugations
     end
   end
 
   private
 
   def has_tense? tense
-    @tenses.key? tense or 
-    raise TenseException, "Unknown tense #{tense}"
+    @tenses.key? tense
   end
 
   def has_verb? verb
-    @verbs.key? verb or 
-    raise VerbException, "Unknown verb #{verb}"
+    @verbs.key? verb
   end
 
   def has_subject? subject 
-    subject.nil? or @subjects.include? subject or 
-    raise SubjectException, "Unknown subject #{subject}"
+    @subjects.include? subject 
   end
 
-  def any_the_same array
-    array.any? { |r| array.count(r) > 1 }
+  def needs_translation conjugations 
+    string_conjugations = conjugations.map(&:to_s)
+    conjugations.size > 1 or string_conjugations.any? do |r| 
+      string_conjugations.count(r) > 1 
+    end
   end
 end
 
