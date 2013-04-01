@@ -1,7 +1,7 @@
 Grokily
 =======
 
-A RESTful API to help you conjugate Norwegian Bokmål verbs.
+A minimalist web application to help you conjugate Norwegian Bokmål verbs.
 
 Installation
 ------------
@@ -78,12 +78,9 @@ At present, available tenses are:
 In due course, the API will be extended to include additional tenses:
 
 * `future` / `futurum`
-* `present-participle` / `presens-partisipp`
-* `past-participle` / `fortid-partisipp`
 * `present-perfect` / `presens-perfekt`
 * `past-perfect` / `fortid-perfekt`
 * `passive` / `passiv`
-* `present-passive` / `presens-passiv`
 * `conditional` / `betinget` 
 
 Improvements? Ideas?
