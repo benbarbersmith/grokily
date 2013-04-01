@@ -80,8 +80,7 @@ In due course, the API will be extended to include additional tenses:
 
 * `present-perfect` / `presens-perfekt`
 * `past-perfect` / `fortid-perfekt`
-* `passive` / `passiv`
-* `conditional` / `betinget` 
+* `future-perfect` / `futurum-perfekt`
 
 Improvements? Ideas?
 --------------------
