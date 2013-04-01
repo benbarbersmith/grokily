@@ -72,12 +72,12 @@ At present, available tenses are:
 
 * `present` / `presens`
 * `past` / `fortid`
+* `future` / `futurum`
 * `stem` / `demme`
 * `imperative` / `viktig`
 
 In due course, the API will be extended to include additional tenses:
 
-* `future` / `futurum`
 * `present-perfect` / `presens-perfekt`
 * `past-perfect` / `fortid-perfekt`
 * `passive` / `passiv`
