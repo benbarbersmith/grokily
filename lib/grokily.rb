@@ -65,7 +65,7 @@ class Grokily < Sinatra::Base
     begin
       process(format, "conjugations", 
               router.conjugate(language, verb, tense, subject) )
-    rescue LanguageException, VerbException, TenseException
+    rescue LanguageException, VerbException, TenseException, SubjectException
       halt 404
     end
   end
@@ -75,7 +75,7 @@ class Grokily < Sinatra::Base
     begin
       process(format, "conjugations", 
               router.conjugate(language, verb, tense) )
-    rescue LanguageException, VerbException, TenseException
+    rescue LanguageException, VerbException, TenseException, SubjectException
       halt 404
     end
   end
