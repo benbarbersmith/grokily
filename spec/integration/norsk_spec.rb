@@ -11,6 +11,7 @@ subjects = [
 tenses = {
   "present" => ["present", "presens"],
   "past" => ["past", "fortid"],
+  "future" => ["future", "futurum"],
 }
 
 forms = {
@@ -132,36 +133,22 @@ tenses.each_pair do |tense, tense_keys|
         qualified_infinitive = qualify(infinitive, verb)
         expected_result = subjectify(verb[tense], subject) 
 
-        context "conjugates #{infinitive} to #{expected_result}" do
+        context "conjugates #{infinitive} to #{expected_result.join(", ")}" do
           tense_keys.each do |tense_key|
 
             it "using #{tense_key} in plain text" do
               get conjugation_url(language, infinitive, tense_key, subject)
               last_response.should be_ok
               last_response.header['Content-Type'].should include 'text/plain'
-              last_response.body.should include expected_result
+              expected_result.each do |e|
+                last_response.body.should include e
+              end
             end
 
             it "using #{tense_key} in JSON" do
-              get conjugation_url(language, infinitive, 
-                                  tense_key, subject, ".json")
-              last_response.should be_ok
-              last_response.header['Content-Type'].should include 'application/json'
-              resp = JSON.parse(last_response.body)
-              resp.keys.should include ("conjugations")
-              resp["conjugations"].each do |c| 
-                c["verb"].should include infinitive or qualified_infinitive 
-                c["tense"].should eq tense
-                c["subject"].should eq subject if subject.size > 0
-              end
-              conjugation_list = resp["conjugations"].map do |c|
-                c["conjugation"]
-              end.flatten
-              expected_result.split(", ").each do |e|
-                conjugation_list.any? do |c|
-                  c.include? e
-                end.should be true
-              end
+              json_conjugation_test(language, verb, infinitive,
+                                    qualified_infinitive, tense, tense_key,
+                                    subject, expected_result)
             end
 
           end
@@ -179,41 +166,26 @@ forms.each_pair do |tense, tense_keys|
         verbs.each_pair do |infinitive, verb|
 
           # Setup variables used in tests
-          expected_result = verb[tense]
+          expected_result = verb[tense].split(", ")
           qualified_infinitive = qualify(infinitive, verb)
 
-          context "conjugates #{infinitive} to #{expected_result}" do
+          context "conjugates #{infinitive} to #{expected_result.join(", ")}" do
             tense_keys.each do |tense_key|
 
               it "using #{tense_key} in plain text" do
                 get conjugation_url(language, infinitive, tense_key, subject)
                 last_response.should be_ok
                 last_response.header['Content-Type'].should include 'text/plain'
-                last_response.body.should include expected_result
+                expected_result.each do |e|
+                  last_response.body.should include e
+                end
               end
 
               it "using #{tense_key} in JSON" do
-                get conjugation_url(language, infinitive, 
-                                    tense_key, subject, ".json")
-                last_response.should be_ok
-                last_response.header['Content-Type'].should include 'application/json'
-                resp = JSON.parse(last_response.body)
-                resp.keys.should include ("conjugations")
-                resp["conjugations"].each do |c| 
-                  c["verb"].should include infinitive or qualified_infinitive 
-                  c["tense"].should eq tense
-                  c["subject"].should eq subject if subject.size > 0
-                end
-                conjugation_list = resp["conjugations"].map do |c|
-                  c["conjugation"]
-                end.flatten
-                expected_result.split(", ").each do |e|
-                  conjugation_list.any? do |c|
-                    c.include? e
-                  end.should be true
-                end
+                json_conjugation_test(language, verb, infinitive,
+                                      qualified_infinitive, tense, tense_key,
+                                      subject, expected_result)
               end
-
             end
           end
         end
