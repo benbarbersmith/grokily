@@ -8,13 +8,20 @@ require 'csv'
 
 require_relative '../lib/grokily'
 
-RSpec.configure do |config|
-    config.include Rack::Test::Methods
+# setup test environment
+set :environment, :test
+set :run, false
+set :raise_errors, true
+set :logging, false
+
+def app 
+  Sinatra::Application
 end
 
-def app
-  Grokily
+RSpec.configure do |config|
+  config.include Rack::Test::Methods
 end
+
 
 def read_verb_data file
   verbs = {}
