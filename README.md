@@ -92,3 +92,5 @@ course, please feel free to fork the code or the data and send a pull
 request with improvements.
 
 Skål!
+
+!["Grokily Code Climate Rating"](https://codeclimate.com/github/benjaminasmith/grokily.png)
