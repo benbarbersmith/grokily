@@ -1,24 +1,24 @@
 # encoding: UTF-8
 
 class Conjugation
-  attr_accessor :verb
+  attr_accessor :verb, :conjugations
 
-  def initialize(verb, conjugation, tense, subject, translate = false)
+  def initialize(verb, conjugations, tense, subject, translate = false)
     @verb = verb
-    @conjugation = [conjugation].flatten
+    @conjugations = [conjugations].flatten
     @tense = tense
     @subject = subject unless subject.nil?
     @use_translation = translate
   end
 
   def to_s
-    qualified_conjugation.join(", ")
+    qualified_conjugations.join(", ")
   end
 
   def to_hash
     hash = { :verb => verb.to_s, 
              :english => verb.english.to_s,
-             :conjugation => qualified_conjugation,
+             :conjugation => conjugations,
              :tense => @tense.to_sym }
     hash[:subject] = @subject if instance_variables.include? :@subject
     hash[:qualifier] = verb.qualifier if verb.qualified?
@@ -26,7 +26,7 @@ class Conjugation
   end 
 
   def translate
-    Conjugation.new(@verb, @conjugation, @tense, @subject, true)
+    Conjugation.new(@verb, @conjugations, @tense, @subject, true)
   end
 
   private
@@ -38,11 +38,11 @@ class Conjugation
     qualifiers 
   end
 
-  def qualified_conjugation 
+  def qualified_conjugations
     if qualifiers.empty? 
-      @conjugation
+      @conjugations
     else
-      @conjugation.map { |c| "#{c} (#{qualifiers.join(", ")})" }
+      @conjugations.map { |c| "#{c} (#{qualifiers.join(", ")})" }
     end
   end
 
