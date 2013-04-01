@@ -8,14 +8,6 @@ class Norsk < Language
 end
 
 class NorskForm < Tense
-  def self.requires_subject?
-    false
-  end
-
-  def self.takes_subject?
-    false
-  end
-
   def self.regular_conjugation(verb, subject=nil)
     raise SubjectException, "No subject allowed." unless subject.nil?
     self.specific_conjugation(verb)
@@ -28,14 +20,6 @@ class NorskForm < Tense
 end
 
 class NorskTense < Tense
-  def self.requires_subject?
-    false
-  end
-
-  def self.takes_subject?
-    true 
-  end
-
   def self.regular_conjugation(verb, subject=nil)
     subjectify(subject, self.specific_conjugation(verb))
   end
