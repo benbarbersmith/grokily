@@ -10,18 +10,16 @@ Install dependencies using bundler:
 
     $ bundle install 
 
-That's the only dependency you need; after that, just grab a copy of the souce
+That's the only dependency you need; after that, just grab a copy of the source
 and run the application.
 
-    $ ruby lib/grokily.rb 
-
-By default, Sinatra will run grokily on port 4567 on your local machine.
+    $ rackup -p4567
 
 Usage
 -----
 
-Assuming that you're running on the default host and port, all URLs start
-with `http://localhost:4567/`.
+Assuming that you're running Grokily using the above command, all URLs
+start with `http://localhost:4567/`.
 
 You can see a list of availabe languages at:
 
