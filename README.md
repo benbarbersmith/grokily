@@ -6,12 +6,12 @@ A minimalist web application to help you conjugate Norwegian Bokmål verbs.
 Installation
 ------------
 
-Install dependencies using bundler:
+Grab a copy of the source by cloning the repo or downloading a zip. Next,
+install dependencies using bundler:
 
     $ bundle install 
 
-That's the only dependency you need; after that, just grab a copy of the source
-and run the application.
+That's all the setup you need to do. To run the application, just type: 
 
     $ rackup -p4567
 
